@@ -1,9 +1,8 @@
 <template>
-    <reader-main-page></reader-main-page>
+<!--    <router-view></router-view>-->
 </template>
 
 <script setup lang="ts">
-    import ReaderMainPage from '@/view/reader/reader-main-page.vue';
 </script>
 <style lang="less">
     * {
