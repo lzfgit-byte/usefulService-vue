@@ -11,7 +11,7 @@
                     Upload
                 </a-button>
             </a-upload>
-            <a-button @click="modal1Visible = true">下载文件</a-button>
+            <a-button @click="handlerModalOpen">下载文件</a-button>
         </space>
         <Modal v-model:visible="modal1Visible" :title="'文件'">
             <template v-if="modal1Visible">
@@ -47,14 +47,21 @@
         }
         if (info.file.status === 'done') {
             message.success(`上传成功`);
+            fileList.value = [];
         } else if (info.file.status === 'error') {
             message.error(`上传失败`);
         }
     };
     const fileInfoDataArr = ref<fileInfoEntity[]>([]);
-    getPostDataExt(fileShareApis.listFileApi, {}).then((res: ResultEntity) => {
-        fileInfoDataArr.value = res?.data;
-    });
+    const loadFiles = () => {
+        getPostDataExt(fileShareApis.listFileApi, {}).then((res: ResultEntity) => {
+            fileInfoDataArr.value = res?.data;
+        });
+    };
+    const handlerModalOpen = () => {
+        loadFiles();
+        modal1Visible.value = true;
+    };
     const handlerFileInfoClick = (path: string) => {
         window.open(fileShareApis.downloadFilebyPath + '?id=' + path);
     };
@@ -66,5 +73,6 @@
     }
     .wrapperAlert {
         cursor: pointer;
+        margin: 2px;
     }
 </style>
