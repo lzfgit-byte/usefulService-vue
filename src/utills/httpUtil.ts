@@ -1,4 +1,4 @@
-import { ResultEntity } from '@/const/type';
+import { ResultEntity } from '@/const/reader/type';
 
 export default {};
 import axios, {AxiosRequestConfig} from 'axios';

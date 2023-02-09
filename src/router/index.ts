@@ -6,8 +6,8 @@ import { App } from '@vue/runtime-core';
 // 每个路由都需要映射到一个组件。
 // 我们后面再讨论嵌套路由。
 const routes = [
-    { path: '/', name: 'main', component: () => import('@/view/reader-table.vue') },
-    { path: '/readPdf', name: 'readPdf', component: () => import('@/view/pdf-reader-main.vue') },
+    { path: '/', name: 'main', component: () => import('@/view/reader/reader-table.vue') },
+    { path: '/readPdf', name: 'readPdf', component: () => import('@/view/reader/pdf-reader-main.vue') },
 ];
 
 // 3. 创建路由实例并传递 `routes` 配置

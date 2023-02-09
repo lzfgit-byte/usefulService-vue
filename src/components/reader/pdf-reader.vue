@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-    import { pdfReaderApi } from '@/const/static-data';
+    import { pdfReaderApi } from '@/const/reader/static-data';
     defineProps({ bookId: String, pageIndex: String });
 </script>
 

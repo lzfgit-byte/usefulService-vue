@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-    import ReaderMainPage from '@/view/reader-main-page.vue';
+    import ReaderMainPage from '@/view/reader/reader-main-page.vue';
 </script>
 <style lang="less">
     * {

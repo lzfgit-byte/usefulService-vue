@@ -10,10 +10,10 @@
 <script setup lang="ts">
     //目录
     import { getPostDataExt } from '@/utills/httpUtil';
-    import CatlogCatlog from '@/components/catlog-catlog.vue';
+    import CatlogCatlog from '@/components/reader/catlog-catlog.vue';
     import { ref } from 'vue';
     import { message } from 'ant-design-vue';
-    import { ResultEntity } from '@/const/type';
+    import { ResultEntity } from '@/const/reader/type';
     const props = defineProps({ bookId: String });
     const emits = defineEmits(['goToPage']);
     const catlogs = ref([]);
