@@ -33,7 +33,7 @@
     import { UploadOutlined } from '@ant-design/icons-vue';
     import fileShareApis from '@/const/fileShare/file-share-apis';
 
-    import { ref } from 'vue';
+    import { ref, useAttrs } from 'vue';
     import { getPostDataExt } from '@/utills/httpUtil';
     import { fileInfoEntity } from '@/const/fileShare/file-share-type';
     import { ResultEntity } from '@/const/type';
