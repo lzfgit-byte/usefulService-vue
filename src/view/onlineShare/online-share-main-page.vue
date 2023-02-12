@@ -1,6 +1,9 @@
 <template>
     <div class="tinymce-boxz">
         <!--        <Editor v-model="content" :api-key="tiny.apiKey" :init="tiny.init" />-->
+        <a-space>
+            <a-button @click="handlerSave">保存内容</a-button>
+        </a-space>
         <Editor v-model="content" :init="tiny.init" />
     </div>
 </template>
@@ -8,8 +11,17 @@
 <script setup>
     import Editor from '@tinymce/tinymce-vue';
     import { reactive, ref } from '@vue/reactivity';
+    import { Space as ASpace, Button as AButton, message } from 'ant-design-vue';
+    import { getPostDataExt } from '@/utills/httpUtil';
+    import onlineShareApis from '@/const/onlineShare/onlineShareApis';
 
     const content = ref('');
+    const handlerSave = () => {
+        getPostDataExt(onlineShareApis.save, { text: content.value }).then((res) => {
+            message.success('保存成功');
+        });
+    };
+
     const tiny = reactive({
         // apiKey: 'qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc', //https://github.com/tinymce/tinymce-vue/blob/main/src/demo/views/Iframe.vue
         init: {

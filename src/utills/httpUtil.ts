@@ -1,9 +1,11 @@
-import { ResultEntity } from '@/const/reader/type';
+import { ResultEntity } from '@/const/type';
 
 export default {};
-import axios, {AxiosRequestConfig} from 'axios';
-axios.defaults.timeout = 16000;
-axios.interceptors.request.use(
+import axios, { AxiosRequestConfig } from 'axios';
+// @ts-ignore
+import { stringify } from 'qs';
+const client = axios.create({ paramsSerializer: stringify, timeout: 16000 });
+client.interceptors.request.use(
     (config) => {
         // 在发送请求之前做什么
         return config;
@@ -12,7 +14,7 @@ axios.interceptors.request.use(
         return Promise.reject(error);
     }
 );
-axios.interceptors.response.use(
+client.interceptors.response.use(
     (response) => {
         return response.data;
     },
@@ -20,11 +22,12 @@ axios.interceptors.response.use(
         return Promise.resolve(response);
     }
 );
-export const getPostData = (url: string, params: any) => {
-    return axios.post(url, params);
-};
-export const getPostDataExt = async (url: string, params: any,option: AxiosRequestConfig<any>={}) => {
-    const res: ResultEntity = await axios.post(url, params,option);
+export const getPostDataExt = async (
+    url: string,
+    params: any,
+    option: AxiosRequestConfig<any> = {}
+) => {
+    const res: ResultEntity = await client.post(url, params, option);
     if (res.code === 200) {
         return Promise.resolve(res);
     } else {
@@ -32,5 +35,5 @@ export const getPostDataExt = async (url: string, params: any,option: AxiosReque
     }
 };
 export const getGetData = (url: string, params: any) => {
-    return axios.get(url, params);
+    return client.get(url, params);
 };
