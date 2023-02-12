@@ -7,7 +7,7 @@
 
 <script setup>
     import Editor from '@tinymce/tinymce-vue';
-    import { reactive, ref, toRefs } from '@vue/reactivity';
+    import { reactive, ref } from '@vue/reactivity';
 
     const content = ref('');
     const tiny = reactive({
