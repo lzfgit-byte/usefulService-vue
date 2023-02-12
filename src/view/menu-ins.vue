@@ -84,23 +84,24 @@
 </script>
 
 <style scoped lang="less">
-    .flatMenu {
+    .menuShare {
         position: absolute;
-        background-color: aqua;
         border-radius: 50%;
         width: 30px;
         height: 30px;
+        z-index: 999999999;
+    }
+    .flatMenu {
         left: v-bind(leftPx);
         top: v-bind(topPx);
+        background-color: aqua;
+        .menuShare();
     }
     .backClass {
-        position: absolute;
-        background-color: #b61515;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
+        .menuShare();
+        background-color: #b71930;
         right: 10px;
-        top: v-bind(topPx);
+        top: 10px;
     }
     .imageClass {
         display: inline-block;

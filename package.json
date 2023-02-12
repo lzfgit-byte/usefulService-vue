@@ -9,8 +9,9 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
-    "ant-design-vue": "^3.2.5",
+    "@tinymce/tinymce-vue": "^4.0.7",
     "animate.css": "^4.1.1",
+    "ant-design-vue": "^3.2.5",
     "axios": "^0.26.1",
     "lodash": "^4.17.21",
     "vue": "^3.0.4",

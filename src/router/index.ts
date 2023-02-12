@@ -18,6 +18,12 @@ export const routes = [
         aliasZH: '文件下载',
         component: () => import('@/view/fileShare/file-share-main-page.vue'),
     },
+    {
+        path: '/onlineShare',
+        name: 'onlineShare',
+        aliasZH: '文本共享',
+        component: () => import('@/view/onlineShare/online-share-main-page.vue'),
+    },
 ];
 
 // 3. 创建路由实例并传递 `routes` 配置
