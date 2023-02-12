@@ -24,6 +24,7 @@
                 </a-menu>
             </template>
         </dropdown>
+        <div class="backClass" @click="hanlderMenuClick({ key: 'back' })"></div>
         <Modal v-model:visible="QRModal.visible" :title="'二维码'">
             <template v-if="QRModal.visible">
                 <div class="qrContainer"
@@ -90,6 +91,15 @@
         width: 30px;
         height: 30px;
         left: v-bind(leftPx);
+        top: v-bind(topPx);
+    }
+    .backClass {
+        position: absolute;
+        background-color: #b61515;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        right: 10px;
         top: v-bind(topPx);
     }
     .imageClass {
