@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vite --host",
+    "dev": "cross-env NODE_ENV=development vite --host",
     "build": "vuedx-typecheck . && vite build",
     "buildDO": "vite build"
   },
@@ -39,6 +39,7 @@
     "typescript": "^4.1.2",
     "vite": "^2.8.6",
     "vue-eslint-parser": "^8.3.0",
-    "vue-template-compiler": "^2.6.14"
+    "vue-template-compiler": "^2.6.14",
+    "cross-env": "^7.0.3"
   }
 }
