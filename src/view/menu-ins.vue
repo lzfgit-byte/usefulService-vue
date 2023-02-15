@@ -1,15 +1,13 @@
 <template>
     <div>
         <dropdown :trigger="['click']">
-            <div
-                class="flatMenu"
-                @mousedown="handlerMouseDown"
-                @mousemove="handlerMouseMove"
-                @mouseup="handlerMouseUp"
-                @touchenter="handlerMouseDown"
-                @touchmove="handlerMouseMove"
-                @touchend="handlerMouseUp"
-            ></div>
+            <!--            @mousedown="handlerMouseDown"-->
+            <!--            @mousemove="handlerMouseMove"-->
+            <!--            @mouseup="handlerMouseUp"-->
+            <!--            @touchenter="handlerMouseDown"-->
+            <!--            @touchmove="handlerMouseMove"-->
+            <!--            @touchend="handlerMouseUp"-->
+            <div class="flatMenu"><menu-outlined style="font-size: 30px" /></div>
             <template #overlay>
                 <a-menu @click="hanlderMenuClick">
                     <menu-item key="back">
@@ -24,7 +22,9 @@
                 </a-menu>
             </template>
         </dropdown>
-        <div class="backClass" @click="hanlderMenuClick({ key: 'back' })"></div>
+        <div class="backClass" @click="hanlderMenuClick({ key: 'back' })"
+            ><arrow-left-outlined style="font-size: 30px"
+        /></div>
         <Modal v-model:visible="QRModal.visible" :title="'二维码'">
             <template v-if="QRModal.visible">
                 <div class="qrContainer"
@@ -40,6 +40,7 @@
 
 <script setup lang="ts">
     import { Dropdown, Menu as AMenu, MenuItem, Modal } from 'ant-design-vue';
+    import { MenuOutlined, ArrowLeftOutlined } from '@ant-design/icons-vue';
     import { useRouter } from 'vue-router';
     import { reactive, ref } from 'vue';
     import { routes as routesClient } from '@/router';
@@ -86,20 +87,21 @@
 <style scoped lang="less">
     .menuShare {
         position: absolute;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
+        //border-radius: 50%;
+        width: 50px;
+        height: 50px;
         z-index: 999999999;
+        cursor: pointer;
     }
     .flatMenu {
-        left: v-bind(leftPx);
-        top: v-bind(topPx);
-        background-color: aqua;
+        right: v-bind(leftPx);
+        top: 50px;
+        //background-color: aqua;
         .menuShare();
     }
     .backClass {
         .menuShare();
-        background-color: #b71930;
+        //background-color: #b71930;
         right: 10px;
         top: 10px;
     }
