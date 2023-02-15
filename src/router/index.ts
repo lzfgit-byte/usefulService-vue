@@ -24,6 +24,12 @@ export const routes = [
         aliasZH: '文本共享',
         component: () => import('@/view/onlineShare/online-share-main-page.vue'),
     },
+    {
+        path: '/hentaiWord',
+        name: 'hentaiWord',
+        aliasZH: 'hentaiWord',
+        component: () => import('@/view/hentaiWord/compoent/hentai-word.vue'),
+    },
 ];
 
 // 3. 创建路由实例并传递 `routes` 配置
