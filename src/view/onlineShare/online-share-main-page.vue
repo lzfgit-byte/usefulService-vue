@@ -4,7 +4,7 @@
         <a-space>
             <a-button @click="handlerSave">保存内容</a-button>
         </a-space>
-        <Editor v-model="content" :init="tiny.init" />
+        <Editor ref="editRef" v-model="content" :init="tiny.init" />
     </div>
 </template>
 
@@ -14,7 +14,7 @@
     import { Space as ASpace, Button as AButton, message } from 'ant-design-vue';
     import { getPostDataExt } from '@/utills/httpUtil';
     import onlineShareApis from '@/const/onlineShare/onlineShareApis';
-
+    const editRef = ref();
     const content = ref('');
     const handlerSave = () => {
         getPostDataExt(onlineShareApis.save, { text: content.value }).then((res) => {
@@ -22,10 +22,18 @@
         });
     };
 
+    const loadData = () => {
+        getPostDataExt(onlineShareApis.loadData).then((res) => {
+            content.value = res?.data;
+        });
+    };
+    loadData();
+
     const tiny = reactive({
         // apiKey: 'qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc', //https://github.com/tinymce/tinymce-vue/blob/main/src/demo/views/Iframe.vue
         init: {
             language: 'zh_CN', //语言类型
+            outputFormat: 'text',
             placeholder: '在这里输入文字', //textarea中的提示信息
             min_width: 320,
             min_height: 220,
@@ -112,5 +120,8 @@
         width: 100%;
         height: 100%;
         padding: 20px;
+    }
+    .tox-notifications-container {
+        display: none;
     }
 </style>
