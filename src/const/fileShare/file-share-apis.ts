@@ -1,6 +1,8 @@
+import { downloadFilePath, prefix } from '@/const/const-data';
+
 export const fileShareApis = {
-    listFileApi: '/api/file/listFiles',
-    uploadFile: '/api/file/uploadFile',
-    downloadFilebyPath: ' http://192.168.0.103:8080/file/downloadFile',
+    listFileApi: `${prefix}/file/listFiles`,
+    uploadFile: `${prefix}/file/uploadFile`,
+    downloadFilebyPath: downloadFilePath,
 };
 export default fileShareApis;

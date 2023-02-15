@@ -1,5 +1,7 @@
+import { prefix } from '@/const/const-data';
+
 export const onlineShareApis = {
-    save: '/api/onlineShare/save',
-    loadData: '/api/onlineShare/loadData',
+    save: `${prefix}/onlineShare/save`,
+    loadData: `${prefix}/onlineShare/loadData`,
 };
 export default onlineShareApis;

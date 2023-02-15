@@ -1,4 +1,6 @@
+import { prefix } from '@/const/const-data';
+
 export const imageApis = {
-    listNetWOrkQrCode: '/api/image/listNetWOrkQrCode',
+    listNetWOrkQrCode: `${prefix}/image/listNetWOrkQrCode`,
 };
 export default imageApis;
