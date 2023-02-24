@@ -5,7 +5,13 @@ import { App } from '@vue/runtime-core';
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。
 // 我们后面再讨论嵌套路由。
-export type routerType = { path: string; name: string; aliasZH: string; showInMenu: string };
+export type routerType = {
+    path: string;
+    name: string;
+    aliasZH: string;
+    showInMenu: string;
+    icon: string;
+};
 export const routes = [
     // { path: '/', name: 'main', component: () => import('@/view/reader/reader-table.vue') },
     // {
@@ -18,6 +24,7 @@ export const routes = [
         name: 'home',
         aliasZH: '首页',
         showInMenu: true,
+        icon: 'home',
         component: () => import('@/view/home.vue'),
     },
     {
@@ -25,6 +32,7 @@ export const routes = [
         name: 'fileDownload',
         aliasZH: '文件下载',
         showInMenu: true,
+        icon: 'download',
         component: () => import('@/view/fileShare/file-share-main-page.vue'),
     },
     {
@@ -32,6 +40,7 @@ export const routes = [
         name: 'onlineShare',
         aliasZH: '文本共享',
         showInMenu: true,
+        icon: 'weather-cloudy',
         component: () => import('@/view/onlineShare/online-share-main-page.vue'),
     },
     {
@@ -39,6 +48,7 @@ export const routes = [
         name: 'hentaiWord',
         aliasZH: 'hentaiWord',
         showInMenu: true,
+        icon: 'home',
         component: () => import('@/view/hentaiWord/compoent/hentai-word.vue'),
     },
 ];

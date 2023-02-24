@@ -17,7 +17,10 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     VarBottomNavigation: typeof import('@varlet/ui')['_BottomNavigationComponent']
     VarBottomNavigationItem: typeof import('@varlet/ui')['_BottomNavigationItemComponent']
+    VarCell: typeof import('@varlet/ui')['_CellComponent']
+    VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarImage: typeof import('@varlet/ui')['_ImageComponent']
+    VarMenu: typeof import('@varlet/ui')['_MenuComponent']
     VarPopup: typeof import('@varlet/ui')['_PopupComponent']
   }
 }

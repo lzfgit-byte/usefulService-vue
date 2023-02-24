@@ -1,19 +1,29 @@
 <template>
     <div>
-        <var-bottom-navigation v-model:active="active">
+        <var-bottom-navigation v-model:active="active" :fixed="true">
             <var-bottom-navigation-item
                 v-for="item in routesInMenu"
                 :key="item.path"
                 :name="item.name"
                 :label="item.aliasZH"
-                icon="home"
+                :icon="item.icon"
                 @click="hanlderBottomMenuClick(item)"
             />
-            <var-bottom-navigation-item
-                name="showIpQR"
-                icon="heart"
-                label="设置"
-            ></var-bottom-navigation-item>
+            <template #fab>
+                <var-menu :placement="'top'" :offset-y="-10">
+                    <!--                    @click="handlerFabClick({ key: 'showIpQR' })"-->
+                    <var-icon name="heart" />
+                    <template #menu>
+                        <var-cell
+                            v-for="item in extMenu"
+                            :key="item.path"
+                            @click="handlerFabClick({ key: item.name, route: item })"
+                            >{{ item.aliasZH }}</var-cell
+                        >
+                        <var-cell @click="handlerFabClick({ key: 'showIpQR' })">二维码</var-cell>
+                    </template>
+                </var-menu>
+            </template>
         </var-bottom-navigation>
 
         <popup v-model:show="QRModal.visible">
@@ -37,7 +47,7 @@
 <script setup lang="ts">
     import { Popup, Image as VarImage } from '@varlet/ui';
     import { useRouter } from 'vue-router';
-    import { computed, reactive, ref, watch } from 'vue';
+    import { computed, reactive, ref } from 'vue';
     import { routes as routesClient } from '@/router';
     import { ImageInfoEntity, ResultEntity } from '@/const/type';
     import { getPostDataExt } from '@/utills/httpUtil';
@@ -45,11 +55,8 @@
     import { getCurrentRoutePath } from '@/utills/KitUtil';
     const router = useRouter();
     const routesInMenu = computed(() => routesClient.filter((t) => t.showInMenu));
+    const extMenu = computed(() => routesClient.filter((t) => !t?.showInMenu));
     const active = ref(routesInMenu.value.filter((i) => i.path === getCurrentRoutePath())[0].name);
-    watch(active, () => {
-        hanlderMenuClick({ key: active.value });
-    });
-
     const QRCodeInfo = ref<ImageInfoEntity[]>();
     const QRModal = reactive({
         visible: false,
@@ -60,10 +67,8 @@
         });
         QRModal.visible = true;
     };
-    const hanlderMenuClick = ({ key }: any) => {
-        if (key === 'back') {
-            router.back();
-        } else if ('showIpQR' === key) {
+    const handlerFabClick = ({ key, route }: any) => {
+        if (key === 'showIpQR') {
             showIpQR();
         }
     };
