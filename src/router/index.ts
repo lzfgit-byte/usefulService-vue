@@ -46,7 +46,7 @@ export const routes = [
     {
         path: '/hentaiWord',
         name: 'hentaiWord',
-        aliasZH: 'hentaiWord',
+        aliasZH: '漫画',
         showInMenu: true,
         icon: 'home',
         component: () => import('@/view/hentaiWord/compoent/hentai-word.vue'),
