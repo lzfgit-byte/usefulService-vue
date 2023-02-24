@@ -1,3 +1,6 @@
+import { fileInfoEntity } from '@/const/fileShare/file-share-type';
+import { SEPARATOR } from '@/const/const-data';
+
 export const wrapperFileSize = (size: number) => {
     const sizeLevel = ['B', 'K', 'M', 'G'];
     let count = 0;
@@ -14,6 +17,11 @@ export const getCurrentRoutePath = () => {
     return location.substring(number + 2);
 };
 
-export const isDir = (path: string) => path.indexOf('.') === -1;
+export const isDir = (file: fileInfoEntity) => !file.fileType;
 
 export const notBlankOrEmpty = (str: any) => str !== null && str !== undefined && str !== '';
+
+export const getLastDir = (path: string) => {
+    const dirs = path.split(SEPARATOR);
+    return dirs[dirs.length - 1];
+};

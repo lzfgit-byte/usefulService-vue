@@ -2,7 +2,12 @@
     <div class="container">
         <div class="header">
             <var-breadcrumbs>
-                <var-breadcrumb v-for="item in paths" :key="item">{{ item.name }}</var-breadcrumb>
+                <var-breadcrumb
+                    v-for="item in paths"
+                    :key="item"
+                    @click="handlerBreadClick(item)"
+                    >{{ item.name }}</var-breadcrumb
+                >
             </var-breadcrumbs>
         </div>
         <div class="body">
@@ -12,13 +17,15 @@
                         <th>名字</th>
                         <th>大小</th>
                         <th>类型</th>
+                        <th>是否隐藏</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="item in fileInfoDataArr" :key="item" @click="handlerTrClick(item)">
                         <td>{{ item.name }}</td>
-                        <td>{{ isDir(item.path) ? '' : wrapperFileSize(item.size) }}</td>
+                        <td>{{ isDir(item) ? '' : wrapperFileSize(item.size) }}</td>
                         <td>{{ item.fileType || '文件夹' }}</td>
+                        <td>{{ item.hidden ? '是' : '否' }}</td>
                     </tr>
                 </tbody>
             </var-table>
@@ -34,23 +41,42 @@
     import { fileInfoEntity } from '@/const/fileShare/file-share-type';
     import { ResultEntity } from '@/const/type';
     import { isDir, notBlankOrEmpty, wrapperFileSize } from '@/utills/KitUtil';
-
-    const loading = ref(false);
-    const finished = ref(true);
-    const load = () => {
-        loadFiles();
-    };
+    import { SEPARATOR } from '@/const/const-data';
 
     const fileInfoDataArr = ref<fileInfoEntity[]>([]);
 
     const paths = ref<fileInfoEntity[]>([]);
+    const handlerBreadClick = (item_: any) => {
+        if (item_.path === '/') {
+            paths.value = [];
+            loadFiles();
+            return;
+        }
+        let filePath = '';
+        const findIndex = paths.value.findIndex((item) => item.path === item_.path);
+        paths.value.forEach((item, index) => {
+            if (index <= findIndex && index !== 0) {
+                filePath = filePath + item.path + SEPARATOR;
+            }
+        });
+        loadFiles(filePath);
+    };
 
     const loadFiles = (path_ = '') => {
         if (notBlankOrEmpty(path_)) {
-            fileInfoDataArr.value.push({ path: path_ });
+            const splits = path_.split(SEPARATOR);
+            paths.value = [];
+            paths.value.push({ name: 'root', path: '/' });
+            splits.forEach((path) => {
+                if (notBlankOrEmpty(path)) {
+                    paths.value.push({ name: path, path });
+                }
+            });
         }
         getPostDataExt(fileShareApis.listFileApi, { path: path_ }).then((res: ResultEntity) => {
-            fileInfoDataArr.value = res?.data.sort((it: fileInfoEntity) => (it.fileType ? 1 : -1));
+            fileInfoDataArr.value = res?.data
+                .sort((it: fileInfoEntity) => (it.fileType ? 1 : -1))
+                .sort((it: fileInfoEntity) => (it.hidden ? 1 : -1));
         });
     };
     loadFiles();
@@ -62,7 +88,7 @@
         loadFiles(path);
     };
     const handlerTrClick = (file: fileInfoEntity) => {
-        if (isDir(file.path)) {
+        if (isDir(file)) {
             handlerFileNext(file.path);
         } else {
             handlerFileInfoClick(file.path);
@@ -79,6 +105,9 @@
         .body {
             tr {
                 cursor: pointer;
+            }
+            td {
+                width: 25%;
             }
         }
     }
