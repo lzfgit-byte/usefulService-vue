@@ -13,3 +13,7 @@ export const getCurrentRoutePath = () => {
     const number = location.indexOf('/#/');
     return location.substring(number + 2);
 };
+
+export const isDir = (path: string) => path.indexOf('.') === -1;
+
+export const notBlankOrEmpty = (str: any) => str !== null && str !== undefined && str !== '';

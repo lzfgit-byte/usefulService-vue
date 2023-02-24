@@ -1,1 +1,1 @@
-export type fileInfoEntity = { name: string; path: string; size: number };
+export type fileInfoEntity = { name?: string; path: string; size?: number; fileType?: string };
