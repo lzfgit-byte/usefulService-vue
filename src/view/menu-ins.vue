@@ -2,7 +2,7 @@
     <div>
         <var-bottom-navigation v-model:active="active">
             <var-bottom-navigation-item
-                v-for="item in routesClient"
+                v-for="item in routesInMenu"
                 :key="item.path"
                 :name="item.name"
                 :label="item.aliasZH"
@@ -11,8 +11,8 @@
             />
             <var-bottom-navigation-item
                 name="showIpQR"
-                icon="home"
-                label="二维码"
+                icon="heart"
+                label="设置"
             ></var-bottom-navigation-item>
         </var-bottom-navigation>
 
@@ -37,14 +37,15 @@
 <script setup lang="ts">
     import { Popup, Image as VarImage } from '@varlet/ui';
     import { useRouter } from 'vue-router';
-    import { reactive, ref, watch } from 'vue';
+    import { computed, reactive, ref, watch } from 'vue';
     import { routes as routesClient } from '@/router';
     import { ImageInfoEntity, ResultEntity } from '@/const/type';
     import { getPostDataExt } from '@/utills/httpUtil';
     import imageApis from '@/const/image/image-apis';
+    import { getCurrentRoutePath } from '@/utills/KitUtil';
     const router = useRouter();
-
-    const active = ref(routesClient[0].name);
+    const routesInMenu = computed(() => routesClient.filter((t) => t.showInMenu));
+    const active = ref(routesInMenu.value.filter((i) => i.path === getCurrentRoutePath())[0].name);
     watch(active, () => {
         hanlderMenuClick({ key: active.value });
     });

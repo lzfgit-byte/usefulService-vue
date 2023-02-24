@@ -7,3 +7,9 @@ export const wrapperFileSize = (size: number) => {
     }
     return size + sizeLevel[count];
 };
+
+export const getCurrentRoutePath = () => {
+    const location = window.location.href;
+    const number = location.indexOf('/#/');
+    return location.substring(number + 2);
+};
