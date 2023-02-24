@@ -1,7 +1,9 @@
 <template>
     <config-provider v-bind="wholeConfig" :locale="zhCN">
-        <router-view></router-view>
-        <menu-ins></menu-ins>
+        <div class="container">
+            <div class="top"> <router-view></router-view></div>
+            <div class="bottom"> <menu-ins></menu-ins></div>
+        </div>
     </config-provider>
 </template>
 
@@ -18,5 +20,16 @@
 <style lang="less">
     * {
         box-sizing: border-box;
+    }
+</style>
+<style lang="less" scoped>
+    .container {
+        height: 100vh;
+        overflow: hidden;
+        .top {
+            height: 90vh;
+            width: 98vh;
+            overflow: auto;
+        }
     }
 </style>
