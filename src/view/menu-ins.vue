@@ -25,21 +25,27 @@
         <div class="backClass" @click="hanlderMenuClick({ key: 'back' })"
             ><arrow-left-outlined style="font-size: 30px"
         /></div>
-        <Modal v-model:visible="QRModal.visible" :title="'二维码'">
+        <popup v-model:show="QRModal.visible">
             <template v-if="QRModal.visible">
-                <div class="qrContainer"
-                    ><div v-for="item in QRCodeInfo" :key="item" class="imageClass">
-                        <img width="300" :src="item.base64Data" />
+                <div class="qrContainer">
+                    <div v-for="item in QRCodeInfo" :key="item">
+                        <var-image
+                            width="185px"
+                            height="185px"
+                            :fit="'fill'"
+                            :src="item.base64Data"
+                        />
                         <span>{{ item.name }}</span>
-                    </div></div
-                >
+                    </div>
+                </div>
             </template>
-        </Modal>
+        </popup>
     </div>
 </template>
 
 <script setup lang="ts">
-    import { Dropdown, Menu as AMenu, MenuItem, Modal } from 'ant-design-vue';
+    import { Dropdown, Menu as AMenu, MenuItem } from 'ant-design-vue';
+    import { Popup, Image as VarImage } from '@varlet/ui';
     import { MenuOutlined, ArrowLeftOutlined } from '@ant-design/icons-vue';
     import { useRouter } from 'vue-router';
     import { reactive, ref } from 'vue';
@@ -111,5 +117,6 @@
     .qrContainer {
         overflow-y: auto;
         height: 500px;
+        text-align: center;
     }
 </style>

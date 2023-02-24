@@ -15,6 +15,7 @@ declare module '@vue/runtime-core' {
     PdfReader: typeof import('./src/components/reader/pdf-reader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    VarImage: typeof import('@varlet/ui')['_ImageComponent']
     VarPopup: typeof import('@varlet/ui')['_PopupComponent']
   }
 }

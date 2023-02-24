@@ -13,6 +13,12 @@ export const routes = [
     //     component: () => import('@/view/reader/pdf-reader-main.vue'),
     // },
     {
+        path: '/',
+        name: 'home',
+        aliasZH: '首页',
+        component: () => import('@/view/home.vue'),
+    },
+    {
         path: '/fileDownload',
         name: 'fileDownload',
         aliasZH: '文件下载',
