@@ -110,17 +110,17 @@
         },
     });
 </script>
-<style scoped>
-    .tinymce-boxz > textarea {
-        display: none;
+<style scoped lang="less">
+    .tinymce-boxz {
+        width: 100vw;
+        height: 100%;
+        padding: 5px;
+        & > textarea {
+            display: none;
+        }
     }
 </style>
-<style lang="less">
-    .tinymce-boxz {
-        width: 100%;
-        height: 100%;
-        padding: 20px;
-    }
+<style>
     .tox-notifications-container {
         display: none;
     }
