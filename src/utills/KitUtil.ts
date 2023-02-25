@@ -25,3 +25,5 @@ export const getLastDir = (path: string) => {
     const dirs = path.split(SEPARATOR);
     return dirs[dirs.length - 1];
 };
+
+export const configStr2boolean = (str: string) => 'true' === str || '1' === str;

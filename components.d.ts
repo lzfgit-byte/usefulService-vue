@@ -21,12 +21,14 @@ declare module '@vue/runtime-core' {
     VarBreadcrumbs: typeof import('@varlet/ui')['_BreadcrumbsComponent']
     VarButton: typeof import('@varlet/ui')['_ButtonComponent']
     VarCell: typeof import('@varlet/ui')['_CellComponent']
+    VarForm: typeof import('@varlet/ui')['_FormComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarImage: typeof import('@varlet/ui')['_ImageComponent']
     VarList: typeof import('@varlet/ui')['_ListComponent']
     VarMenu: typeof import('@varlet/ui')['_MenuComponent']
     VarPopup: typeof import('@varlet/ui')['_PopupComponent']
     VarSpace: typeof import('@varlet/ui')['_SpaceComponent']
+    VarSwitch: typeof import('@varlet/ui')['_SwitchComponent']
     VarTable: typeof import('@varlet/ui')['_TableComponent']
   }
 }

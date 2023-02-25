@@ -17,15 +17,17 @@
                         <th>名字</th>
                         <th>大小</th>
                         <th>类型</th>
-                        <th>是否隐藏</th>
+                        <!--                        <th>是否隐藏</th>-->
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="item in fileInfoDataArr" :key="item" @click="handlerTrClick(item)">
-                        <td>{{ item.name }}</td>
+                        <td>
+                            <span>{{ item.name }}</span>
+                        </td>
                         <td>{{ isDir(item) ? '' : wrapperFileSize(item.size) }}</td>
                         <td>{{ item.fileType || '文件夹' }}</td>
-                        <td>{{ item.hidden ? '是' : '否' }}</td>
+                        <!--                        <td>{{ item.hidden ? '是' : '否' }}</td>-->
                     </tr>
                 </tbody>
             </var-table>
@@ -99,10 +101,13 @@
 
 <style scoped lang="less">
     .container {
-        width: 98vw;
+        width: 93vw;
+        height: 83vh;
         margin: 10px;
         align-items: center;
         .body {
+            height: 80vh;
+            overflow-y: auto;
             tr {
                 cursor: pointer;
             }

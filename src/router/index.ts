@@ -49,7 +49,7 @@ export const routes = [
         aliasZH: '设置',
         showInMenu: true,
         icon: 'cog',
-        component: () => import('@/view/setting/setting.vue'),
+        component: () => import('@/view/setting/set-ting.vue'),
     },
     {
         path: '/hentaiWord',
@@ -57,7 +57,7 @@ export const routes = [
         aliasZH: 'hentaiWord',
         showInMenu: false,
         icon: 'home',
-        component: () => import('@/view/setting/setting.vue'),
+        component: () => import('@/view/setting/set-ting.vue'),
     },
 ];
 
