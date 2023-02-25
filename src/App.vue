@@ -1,19 +1,13 @@
 <template>
-    <config-provider v-bind="wholeConfig" :locale="zhCN">
-        <div class="container">
-            <div class="top"> <router-view></router-view></div>
-            <div class="bottom"> <menu-ins></menu-ins></div>
-        </div>
-    </config-provider>
+    <div class="container">
+        <div class="top"> <router-view></router-view></div>
+        <div class="bottom"> <menu-ins></menu-ins></div>
+    </div>
 </template>
 
 <script setup lang="ts">
-    import zhCN from 'ant-design-vue/es/locale/zh_CN';
-    import { ConfigProvider } from 'ant-design-vue';
-    import { reactive, provide } from 'vue';
+    import { provide } from 'vue';
     import MenuIns from '@/view/menu-ins.vue';
-    const modalConfig = { centered: true };
-    const wholeConfig = reactive({ ...modalConfig });
     const href = new URL(window.location.href);
     provide('baseHref', href);
 </script>

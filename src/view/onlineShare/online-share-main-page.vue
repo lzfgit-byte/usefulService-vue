@@ -1,9 +1,9 @@
 <template>
     <div class="tinymce-boxz">
         <!--        <Editor v-model="content" :api-key="tiny.apiKey" :init="tiny.init" />-->
-        <a-space>
-            <a-button @click="handlerSave">保存内容</a-button>
-        </a-space>
+        <var-space :size="[10, 10]">
+            <var-button type="primary" @click="handlerSave">主要按钮</var-button>
+        </var-space>
         <Editor ref="editRef" v-model="content" :init="tiny.init" />
     </div>
 </template>
@@ -11,14 +11,14 @@
 <script setup>
     import Editor from '@tinymce/tinymce-vue';
     import { reactive, ref } from '@vue/reactivity';
-    import { Space as ASpace, Button as AButton, message } from 'ant-design-vue';
     import { getPostDataExt } from '@/utills/httpUtil';
+    import { Snackbar } from '@varlet/ui';
     import onlineShareApis from '@/const/onlineShare/onlineShareApis';
     const editRef = ref();
     const content = ref('');
     const handlerSave = () => {
         getPostDataExt(onlineShareApis.save, { text: content.value }).then((res) => {
-            message.success('保存成功');
+            Snackbar.success('保存成功');
         });
     };
 

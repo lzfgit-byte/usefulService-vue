@@ -44,12 +44,20 @@ export const routes = [
         component: () => import('@/view/onlineShare/online-share-main-page.vue'),
     },
     {
+        path: '/setting',
+        name: 'setting',
+        aliasZH: '设置',
+        showInMenu: true,
+        icon: 'cog',
+        component: () => import('@/view/setting/setting.vue'),
+    },
+    {
         path: '/hentaiWord',
         name: 'hentaiWord',
-        aliasZH: '漫画',
-        showInMenu: true,
+        aliasZH: 'hentaiWord',
+        showInMenu: false,
         icon: 'home',
-        component: () => import('@/view/hentaiWord/compoent/hentai-word.vue'),
+        component: () => import('@/view/setting/setting.vue'),
     },
 ];
 

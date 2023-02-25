@@ -19,12 +19,14 @@ declare module '@vue/runtime-core' {
     VarBottomNavigationItem: typeof import('@varlet/ui')['_BottomNavigationItemComponent']
     VarBreadcrumb: typeof import('@varlet/ui')['_BreadcrumbComponent']
     VarBreadcrumbs: typeof import('@varlet/ui')['_BreadcrumbsComponent']
+    VarButton: typeof import('@varlet/ui')['_ButtonComponent']
     VarCell: typeof import('@varlet/ui')['_CellComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarImage: typeof import('@varlet/ui')['_ImageComponent']
     VarList: typeof import('@varlet/ui')['_ListComponent']
     VarMenu: typeof import('@varlet/ui')['_MenuComponent']
     VarPopup: typeof import('@varlet/ui')['_PopupComponent']
+    VarSpace: typeof import('@varlet/ui')['_SpaceComponent']
     VarTable: typeof import('@varlet/ui')['_TableComponent']
   }
 }

@@ -1,8 +1,6 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import './index.css';
-import 'ant-design-vue/dist/antd.css';
-import 'animate.css/animate.min.css';
 import '@varlet/ui/es/style';
 import { registRouter } from '@/router';
 
