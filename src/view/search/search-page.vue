@@ -8,13 +8,21 @@
         <div class="search-container">
             <div class="search">
                 <img src="/imgs/search.svg" />
-                <input placeholder="请输入" />
+                <input ref="searchInput" :value="value" placeholder="请输入" @blur="handleBlur" />
             </div>
         </div>
     </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+    import { ref, watch } from 'vue';
+
+    const value = ref();
+    const searchInput = ref<any>();
+    const handleBlur = () => {
+        value.value = searchInput.value.value;
+    };
+</script>
 
 <style scoped lang="less">
     .container {
