@@ -19,11 +19,12 @@
     import { getPostDataExt } from '@/utills/httpUtil';
     import { ResultEntity } from '@/const/type';
     import { configStr2boolean } from '@/utills/KitUtil';
+    import { settings } from '@/view/setting/const/setting-types';
 
     const disabled = ref(false);
     const readonly = ref(false);
 
-    const formData = reactive({ isShowHidden: false });
+    const formData = reactive<settings>({ isShowHidden: false });
     watch(formData, () => {
         getPostDataExt(settingApis.set, formData);
     });
