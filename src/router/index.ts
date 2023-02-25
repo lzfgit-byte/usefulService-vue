@@ -25,7 +25,7 @@ export const routes = [
         aliasZH: '首页',
         showInMenu: true,
         icon: 'home',
-        component: () => import('@/view/home.vue'),
+        component: () => import('@/view/home-page.vue'),
     },
     {
         path: '/fileDownload',
