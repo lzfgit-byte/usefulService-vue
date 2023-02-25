@@ -15,7 +15,7 @@
 <script setup lang="ts">
     import { getPostDataExt } from '@/utills/httpUtil';
     import { ref } from 'vue';
-    import { BookInfo } from '@/const/reader/type';
+    import { BookInfo } from '@/view/reader/const/type';
     import BookCover from '@/components/reader/book-cover.vue';
     import { useRouter } from 'vue-router';
     import { message } from 'ant-design-vue';

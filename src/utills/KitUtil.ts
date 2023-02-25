@@ -1,4 +1,4 @@
-import { fileInfoEntity } from '@/const/fileShare/file-share-type';
+import { fileInfoEntity } from '@/view/fileShare/const/file-share-type';
 import { SEPARATOR } from '@/const/const-data';
 
 export const wrapperFileSize = (size: number) => {

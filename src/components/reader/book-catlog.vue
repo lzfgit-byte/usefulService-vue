@@ -13,7 +13,7 @@
     import CatlogCatlog from '@/components/reader/catlog-catlog.vue';
     import { ref } from 'vue';
     import { message } from 'ant-design-vue';
-    import { ResultEntity } from '@/const/reader/type';
+    import { ResultEntity } from '@/view/reader/const/type';
     const props = defineProps({ bookId: String });
     const emits = defineEmits(['goToPage']);
     const catlogs = ref([]);

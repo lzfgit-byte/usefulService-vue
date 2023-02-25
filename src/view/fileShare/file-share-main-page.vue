@@ -36,11 +36,11 @@
 </template>
 
 <script setup lang="ts">
-    import fileShareApis from '@/const/fileShare/file-share-apis';
+    import fileShareApis from '@/view/fileShare/const/file-share-apis';
 
     import { ref } from 'vue';
     import { getPostDataExt } from '@/utills/httpUtil';
-    import { fileInfoEntity } from '@/const/fileShare/file-share-type';
+    import { fileInfoEntity } from '@/view/fileShare/const/file-share-type';
     import { ResultEntity } from '@/const/type';
     import { isDir, notBlankOrEmpty, wrapperFileSize } from '@/utills/KitUtil';
     import { SEPARATOR } from '@/const/const-data';

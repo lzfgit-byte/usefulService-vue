@@ -15,7 +15,7 @@
 <script setup lang="ts">
     import { reactive, ref } from '@vue/reactivity';
     import { watch } from 'vue';
-    import settingApis from '@/const/setting/setting-apis';
+    import settingApis from '@/view/setting/const/setting-apis';
     import { getPostDataExt } from '@/utills/httpUtil';
     import { ResultEntity } from '@/const/type';
     import { configStr2boolean } from '@/utills/KitUtil';

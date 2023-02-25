@@ -13,7 +13,7 @@
     import { reactive, ref } from '@vue/reactivity';
     import { getPostDataExt } from '@/utills/httpUtil';
     import { Snackbar } from '@varlet/ui';
-    import onlineShareApis from '@/const/onlineShare/onlineShareApis';
+    import onlineShareApis from '@/view/onlineShare/const/onlineShareApis';
     const editRef = ref();
     const content = ref('');
     const handlerSave = () => {

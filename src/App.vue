@@ -8,7 +8,14 @@
 <script setup lang="ts">
     import { provide } from 'vue';
     import MenuIns from '@/view/menu-ins.vue';
+    import { getPostDataExt } from '@/utills/httpUtil';
+    import settingApis from '@/view/setting/const/setting-apis';
+    import { ResultEntity } from '@/const/type';
+    import { configStr2boolean } from '@/utills/KitUtil';
     const href = new URL(window.location.href);
+    getPostDataExt(settingApis.listConfig, {}).then((res: ResultEntity) => {
+        formData.isShowHidden = configStr2boolean(res?.data?.isShowHidden);
+    });
     provide('baseHref', href);
 </script>
 <style lang="less">
