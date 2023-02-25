@@ -58,7 +58,6 @@
     const router = useRouter();
     const routesInMenu = computed(() => routesClient.filter((t) => t.showInMenu));
     const extMenu = computed(() => {
-        console.log(store.state.dynamicMenu);
         return [...store.state.dynamicMenu, ...routesClient].filter((t) => !t?.showInMenu);
     });
     const active = ref(routesInMenu.value.filter((i) => i.path === getCurrentRoutePath())[0].name);

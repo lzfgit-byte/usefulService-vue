@@ -18,6 +18,7 @@
     import { ref } from 'vue';
     import { useRouter } from 'vue-router';
     import { useStore } from 'vuex';
+    import { routerType } from '@/router';
     const router = useRouter();
     const store = useStore();
     const value = ref();
@@ -25,17 +26,19 @@
     const handleBlur = () => {
         value.value = searchInput.value.value;
         if (value.value === '180742') {
-            const route: any = {
-                path: '/hentaiWord',
-                name: 'hentaiWord',
-                aliasZH: 'hentaiWord',
-                showInMenu: false,
-                icon: 'home',
-                component: () => import('@/view/setting/set-ting.vue'),
-            };
-            router.addRoute(route);
-            store.commit('addNew', route);
-            console.log(store.state.dynamicMenu);
+            const dynamicMenu = store.state.dynamicMenu;
+            if (!dynamicMenu.some((item: routerType) => item.path === '/hentaiWord')) {
+                const route: any = {
+                    path: '/hentaiWord',
+                    name: 'hentaiWord',
+                    aliasZH: 'hentaiWord',
+                    showInMenu: false,
+                    icon: 'home',
+                    component: () => import('@/view/setting/set-ting.vue'),
+                };
+                router.addRoute(route);
+                store.commit('addNew', route);
+            }
         }
     };
 </script>
