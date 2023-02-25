@@ -45,7 +45,7 @@
 
     const fileInfoDataArr = ref<fileInfoEntity[]>([]);
 
-    const paths = ref<fileInfoEntity[]>([]);
+    const paths = ref<fileInfoEntity[]>([{ name: 'root', path: '/' }]);
     const handlerBreadClick = (item_: any) => {
         if (item_.path === '/') {
             paths.value = [];
