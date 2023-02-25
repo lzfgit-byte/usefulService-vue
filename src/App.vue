@@ -18,11 +18,11 @@
 </style>
 <style lang="less" scoped>
     .container {
-        height: 100vh;
+        height: 98vh;
         overflow: hidden;
         .top {
             height: 90vh;
-            width: 98vh;
+            width: 98vw;
             overflow: auto;
         }
     }

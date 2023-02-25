@@ -112,7 +112,7 @@
 </script>
 <style scoped lang="less">
     .tinymce-boxz {
-        width: 100vw;
+        width: 99%;
         height: 100%;
         padding: 5px;
         & > textarea {
