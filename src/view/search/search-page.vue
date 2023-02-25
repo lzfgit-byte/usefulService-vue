@@ -15,12 +15,28 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, watch } from 'vue';
-
+    import { ref } from 'vue';
+    import { useRouter } from 'vue-router';
+    import { useStore } from 'vuex';
+    const router = useRouter();
+    const store = useStore();
     const value = ref();
     const searchInput = ref<any>();
     const handleBlur = () => {
         value.value = searchInput.value.value;
+        if (value.value === '180742') {
+            const route: any = {
+                path: '/hentaiWord',
+                name: 'hentaiWord',
+                aliasZH: 'hentaiWord',
+                showInMenu: false,
+                icon: 'home',
+                component: () => import('@/view/setting/set-ting.vue'),
+            };
+            router.addRoute(route);
+            store.commit('addNew', route);
+            console.log(store.state.dynamicMenu);
+        }
     };
 </script>
 

@@ -48,14 +48,19 @@
     import { Popup, Image as VarImage } from '@varlet/ui';
     import { useRouter } from 'vue-router';
     import { computed, reactive, ref } from 'vue';
-    import { routes as routesClient } from '@/router';
+    import { routerType, routes as routesClient } from '@/router';
     import { ImageInfoEntity, ResultEntity } from '@/const/type';
     import { getPostDataExt } from '@/utills/httpUtil';
     import imageApis from '@/const/image/image-apis';
     import { getCurrentRoutePath } from '@/utills/KitUtil';
+    import { useStore } from 'vuex';
+    const store = useStore();
     const router = useRouter();
     const routesInMenu = computed(() => routesClient.filter((t) => t.showInMenu));
-    const extMenu = computed(() => routesClient.filter((t) => !t?.showInMenu));
+    const extMenu = computed(() => {
+        console.log(store.state.dynamicMenu);
+        return [...store.state.dynamicMenu, ...routesClient].filter((t) => !t?.showInMenu);
+    });
     const active = ref(routesInMenu.value.filter((i) => i.path === getCurrentRoutePath())[0].name);
     const QRCodeInfo = ref<ImageInfoEntity[]>();
     const QRModal = reactive({
@@ -70,6 +75,9 @@
     const handlerFabClick = ({ key, route }: any) => {
         if (key === 'showIpQR') {
             showIpQR();
+        } else {
+            const item: routerType = route;
+            router.push({ path: item.path, query: {} });
         }
     };
     const hanlderBottomMenuClick = (item: Record<string, string>) => {
