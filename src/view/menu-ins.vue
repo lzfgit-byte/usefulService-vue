@@ -21,6 +21,7 @@
                             >{{ item.aliasZH }}</var-cell
                         >
                         <var-cell @click="handlerFabClick({ key: 'showIpQR' })">二维码</var-cell>
+                        <var-cell @click="handlerFabClick({ key: 'clearTemp' })">清除缓存</var-cell>
                     </template>
                 </var-menu>
             </template>
@@ -51,9 +52,10 @@
     import { routerType, routes as routesClient } from '@/router';
     import { ImageInfoEntity, ResultEntity } from '@/const/type';
     import { getPostDataExt } from '@/utills/httpUtil';
-    import imageApis from '@/const/image/image-apis';
-    import { getCurrentRoutePath } from '@/utills/KitUtil';
+    import imageApis from '@/const/global/image-apis';
+    import { getCurrentRoutePath, Message } from '@/utills/KitUtil';
     import { useStore } from 'vuex';
+    import tempApis from '@/const/global/temp-apis';
     const store = useStore();
     const router = useRouter();
     const routesInMenu = computed(() => routesClient.filter((t) => t.showInMenu));
@@ -74,6 +76,14 @@
     const handlerFabClick = ({ key, route }: any) => {
         if (key === 'showIpQR') {
             showIpQR();
+        } else if (key === 'clearTemp') {
+            getPostDataExt(tempApis.clearTemp)
+                .then(() => {
+                    Message.success('删除成功');
+                })
+                .catch(() => {
+                    Message.success('删除失败');
+                });
         } else {
             const item: routerType = route;
             router.push({ path: item.path, query: {} });

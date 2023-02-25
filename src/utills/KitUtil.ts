@@ -1,5 +1,6 @@
 import { fileInfoEntity } from '@/view/fileShare/const/file-share-type';
 import { SEPARATOR } from '@/const/const-data';
+import { Snackbar } from '@varlet/ui';
 
 export const wrapperFileSize = (size: number) => {
     const sizeLevel = ['B', 'K', 'M', 'G'];
@@ -27,3 +28,5 @@ export const getLastDir = (path: string) => {
 };
 
 export const configStr2boolean = (str: string) => 'true' === str || '1' === str;
+
+export const Message = Snackbar;
