@@ -26,7 +26,7 @@
                             <span>{{ item.name }}</span>
                         </td>
                         <td>{{ isDir(item) ? '' : wrapperFileSize(item.size) }}</td>
-                        <td>{{ item.fileType || '文件夹' }}</td>
+                        <td>{{ item.fileType || 'F' }}</td>
                         <!--                        <td>{{ item.hidden ? '是' : '否' }}</td>-->
                     </tr>
                 </tbody>
@@ -76,9 +76,9 @@
             });
         }
         getPostDataExt(fileShareApis.listFileApi, { path: path_ }).then((res: ResultEntity) => {
-            fileInfoDataArr.value = res?.data
-                .sort((it: fileInfoEntity) => (it.fileType ? 1 : -1))
-                .sort((it: fileInfoEntity) => (it.hidden ? 1 : -1));
+            fileInfoDataArr.value = res?.data.sort(
+                (it: fileInfoEntity, next: fileInfoEntity) => it.order - next.order
+            );
         });
     };
     loadFiles();
@@ -112,7 +112,9 @@
                 cursor: pointer;
             }
             td {
-                width: 25%;
+                width: 30%;
+            }
+            span {
             }
         }
     }

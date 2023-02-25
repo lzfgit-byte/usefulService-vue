@@ -4,4 +4,5 @@ export type fileInfoEntity = {
     size?: number;
     fileType?: string;
     hidden?: boolean;
+    order?: number;
 };
