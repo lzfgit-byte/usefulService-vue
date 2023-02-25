@@ -43,7 +43,7 @@
                 display: flex;
                 border-radius: 22px;
                 box-shadow: 0 1px 6px 0 #20212447;
-                height: 35px;
+                height: 39px;
                 padding: 5px;
                 input {
                     background-color: #fff;
@@ -51,8 +51,9 @@
                     border-radius: 10%;
                     color: #000;
                     outline: 0;
-                    height: 24px;
+                    height: 30px;
                     font-size: 20px;
+                    line-height: 20px;
                 }
             }
         }
