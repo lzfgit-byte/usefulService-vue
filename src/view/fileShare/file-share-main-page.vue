@@ -50,7 +50,7 @@
     const paths = ref<fileInfoEntity[]>([{ name: 'root', path: '/' }]);
     const handlerBreadClick = (item_: any) => {
         if (item_.path === '/') {
-            paths.value = [];
+            paths.value = [{ name: 'root', path: '/' }];
             loadFiles();
             return;
         }

@@ -2,7 +2,7 @@
     <div class="tinymce-boxz">
         <!--        <Editor v-model="content" :api-key="tiny.apiKey" :init="tiny.init" />-->
         <var-space :size="[10, 10]">
-            <var-button type="primary" @click="handlerSave">主要按钮</var-button>
+            <var-button type="primary" @click="handlerSave">保存</var-button>
         </var-space>
         <Editor ref="editRef" v-model="content" :init="tiny.init" />
     </div>

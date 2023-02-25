@@ -79,10 +79,10 @@
         } else if (key === 'clearTemp') {
             getPostDataExt(tempApis.clearTemp)
                 .then(() => {
-                    Message.success('删除成功');
+                    Message.success('清除成功');
                 })
                 .catch(() => {
-                    Message.success('删除失败');
+                    Message.error('清除失败');
                 });
         } else {
             const item: routerType = route;
