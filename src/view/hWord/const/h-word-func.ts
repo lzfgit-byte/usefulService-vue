@@ -1,13 +1,13 @@
 import { getPostDataExt } from '@/utills/httpUtil';
 import hWordApis from '@/view/hWord/const/h-word-apis';
-import { Message } from '@/utills/KitUtil';
+import { IMessage } from '@/utills/KitUtil';
 import { LoadingBar } from '@varlet/ui';
 
 export default {};
 
 export const getHtmlInfo = async (html: string): any => {
     const res = await getPostDataExt(hWordApis.getHtmlInfo, { html }).catch((res) => {
-        Message.error(res?.msg || '错误');
+        IMessage.error(res?.msg || '错误');
         LoadingBar.finish();
         return Promise.reject();
     });

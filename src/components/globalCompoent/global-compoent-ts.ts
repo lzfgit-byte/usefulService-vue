@@ -1,7 +1,7 @@
 import { compoentFunc, playVideoInType } from '@/const/type';
 import { h, ref, render, VNode } from 'vue';
 import GlobalCompoentCom from '@/components/globalCompoent/global-compoent-com.vue';
-import { Message } from '@/utills/KitUtil';
+import { IMessage } from '@/utills/KitUtil';
 const currentRecord = ref();
 const appContext = ref();
 let currentInstance: compoentFunc;
@@ -33,7 +33,7 @@ export const playVideo = (data: playVideoInType, cb_ = null, ecb_ = null) => {
     currentRecord.value = data;
     init();
     if (!currentInstance['playVideo']) {
-        Message.error('无方法');
+        IMessage.error('无方法');
     }
     currentInstance?.playVideo(data);
 };

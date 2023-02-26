@@ -22,8 +22,7 @@
 <script setup lang="ts">
     import { onMounted, ref, watch } from 'vue';
     import videojs, { VideoJsPlayerOptions } from 'video.js';
-    import { logToService, Message } from '@/utills/KitUtil';
-    import { getPostDataExt } from '@/utills/httpUtil';
+    import { logToService, IMessage } from '@/utills/KitUtil';
     import { useIntersectionObserver } from '@vueuse/core';
     import { useWindowSize } from '@vueuse/core';
 
@@ -55,7 +54,7 @@
                     videojs.log('Awww...over so soon?!');
                 });
                 this.on('error', function (data) {
-                    Message.error('video 报错');
+                    IMessage.error('video 报错');
                     logToService(data);
                 });
             });
@@ -70,7 +69,7 @@
         }
         player?.src({ src: videoSrc });
         player?.load();
-        // Message.info(document.getElementsByTagName('video').length.toString());
+        // IMessage.info(document.getElementsByTagName('video').length.toString());
     };
     watch(targetIsVisible, () => {
         if (!targetIsVisible.value) {

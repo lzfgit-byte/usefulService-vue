@@ -53,7 +53,7 @@
     import { ImageInfoEntity, ResultEntity } from '@/const/type';
     import { getPostDataExt } from '@/utills/httpUtil';
     import imageApis from '@/const/global/image-apis';
-    import { getCurrentRoutePath, Message } from '@/utills/KitUtil';
+    import { getCurrentRoutePath, IMessage } from '@/utills/KitUtil';
     import { dynaRoutes } from '@/view/search/const/search';
     import { useStore } from 'vuex';
     import tempApis from '@/const/global/temp-apis';
@@ -92,10 +92,10 @@
         } else if (key === 'clearTemp') {
             getPostDataExt(tempApis.clearTemp)
                 .then(() => {
-                    Message.success('清除成功');
+                    IMessage.success('清除成功');
                 })
                 .catch(() => {
-                    Message.error('清除失败');
+                    IMessage.error('清除失败');
                 });
         } else {
             const item: routerType = route;

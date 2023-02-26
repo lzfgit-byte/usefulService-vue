@@ -34,7 +34,7 @@ export const getLastDir = (path: string) => {
 
 export const configStr2boolean = (str: string) => 'true' === str || '1' === str;
 
-export const Message = Snackbar;
+export const IMessage = Snackbar;
 
 export const getProxyImgUrl = (url: string) => proxyApis.getImgByte + '?path=' + url;
 export const getProxyVideoUrl = (url: string) => proxyApis.getVideoByte + '?path=' + url;
