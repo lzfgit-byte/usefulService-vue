@@ -25,15 +25,26 @@
     import { Message } from '@/utills/KitUtil';
     import { getPostDataExt } from '@/utills/httpUtil';
     import { useIntersectionObserver } from '@vueuse/core';
+    import { useWindowSize } from '@vueuse/core';
+
     const container = ref();
     const targetIsVisible = ref();
     const { stop } = useIntersectionObserver(container, ([{ isIntersecting }], observerElement) => {
         targetIsVisible.value = isIntersecting;
     });
+
+    const { width, height } = useWindowSize();
     const src = ref();
     const videoType = ref('mp4');
     const videoRef = ref();
-    var options: VideoJsPlayerOptions = { html5: true, width: 300 };
+    console.log(width.value);
+    var options: VideoJsPlayerOptions = {
+        html5: true,
+        width: width.value * 0.8,
+        height: height.value * 0.85,
+        loop: true,
+        autoplay: false,
+    };
     let player: videojs.Player;
     onMounted(() => {
         if (videoRef.value) {

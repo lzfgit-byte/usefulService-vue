@@ -1,16 +1,16 @@
 <template>
-    <!--    <var-popup v-model:show="videoSet.visible" position="center">-->
-    <!--        <video-html5 :title="videoSet.videoTitle" :src="videoSet.videoSrc"></video-html5>-->
-    <!--    </var-popup>-->
-    <div v-show="videoSet.visible" class="popup" @click="videoSet.visible = false">
-        <div class="popup-container">
-            <video-html5
-                ref="videoRef"
-                :title="videoSet.videoTitle"
-                :src="videoSet.videoSrc"
-            ></video-html5>
-        </div>
-    </div>
+    <var-popup v-model:show="videoSet.visible" position="center">
+        <video-html5
+            ref="videoRef"
+            :title="videoSet.videoTitle"
+            :src="videoSet.videoSrc"
+        ></video-html5>
+    </var-popup>
+    <!--    <div v-show="videoSet.visible" class="popup" @click="videoSet.visible = false">-->
+    <!--        <div class="popup-container">-->
+    <!--            -->
+    <!--        </div>-->
+    <!--    </div>-->
 </template>
 
 <script setup lang="ts">

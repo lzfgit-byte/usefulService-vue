@@ -63,6 +63,15 @@
     const infos = ref<[x: mainHtml]>();
     const pageInfos = ref();
     const tags_ = ref<tags[]>();
+    const search = reactive({
+        visible: [1],
+        searchValue: '',
+        search: () => {
+            const sarchVal = search.searchValue.replaceAll(' ', '+');
+            const searchUrl = `https://thehentaiworld.com/?s=${sarchVal}`;
+            loadPage(searchUrl);
+        },
+    });
     const handlerChangePage = (url: string) => {
         loadPage(url);
     };
@@ -84,20 +93,12 @@
                 isSpinning.value = false;
                 LoadingBar.finish();
             });
+        search.visible = [];
     };
     loadPage(TEXT_URL);
     const handlerTagClick = (url: string) => {
         loadPage(url);
     };
-    const search = reactive({
-        visible: [1],
-        searchValue: '',
-        search: () => {
-            const sarchVal = search.searchValue.replaceAll(' ', '+');
-            const searchUrl = `https://thehentaiworld.com/?s=${sarchVal}`;
-            loadPage(searchUrl);
-        },
-    });
 </script>
 
 <style scoped lang="less">

@@ -62,6 +62,7 @@
     import { getHtml } from '@/utills/NetUtils';
     import { getImgInfo, getImgInfoOnly, getVideoInfo } from '@/view/hWord/const/h-word-func';
     import { playVideo } from '@/components/globalCompoent/global-compoent-ts';
+    import { LoadingBar } from '@varlet/ui';
 
     const prop = defineProps({
         info: Object as PropType<mainHtml>,
@@ -90,11 +91,11 @@
     let viewerInstance: any = null;
     const getDetail = async (isFull = false) => {
         if (prop?.info?.type !== 'Video') {
-            isSpinning.value = true;
+            LoadingBar.start();
             const imgs: any = await getAllImg(isFull).catch((res) => {
-                isSpinning.value = false;
+                LoadingBar.error();
             });
-            isSpinning.value = false;
+            LoadingBar.finish();
             allImgs = [];
             hasShowProgress.value = true;
             progressValue.value = 0;
@@ -117,11 +118,11 @@
             hasShowProgress.value = false;
             showImgs(allImgs);
         } else {
-            isSpinning.value = true;
+            LoadingBar.start();
             const html = await getHtml(prop?.info?.jumpUrl || '');
             const videoInfo: videoInfo = await getVideoInfo(html);
             playVideo({ videoSrc: getProxyVideoUrl(videoInfo.videoSrc), title: videoInfo.tite });
-            isSpinning.value = false;
+            LoadingBar.finish();
         }
     };
     const showImgs = (allImgs: any) => {
