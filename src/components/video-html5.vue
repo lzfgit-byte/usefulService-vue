@@ -23,6 +23,7 @@
     import { onMounted, ref } from 'vue';
     import videojs, { VideoJsPlayerOptions } from 'video.js';
     import { Message } from '@/utills/KitUtil';
+    import { getPostDataExt } from '@/utills/httpUtil';
     const src = ref();
     const videoType = ref('mp4');
     const videoRef = ref();
@@ -40,6 +41,7 @@
                     Message.info(data.msg);
                     // const keys = Object.keys(data);
                     // Message.info(keys.join(','));
+                    getPostDataExt('/api/log/log', data);
                 });
             });
         }
@@ -52,6 +54,7 @@
             videoType.value = split[split.length - 1];
         }
         player?.src({ src: videoSrc });
+        player?.load();
         // Message.info(document.getElementsByTagName('video').length.toString());
     };
 

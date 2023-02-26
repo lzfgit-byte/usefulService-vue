@@ -63,7 +63,7 @@
     const pageInfos = ref();
     const tags_ = ref<tags[]>();
     const handlerChangePage = (url: string) => {
-        loadPage('https:' + url);
+        loadPage(url);
     };
 
     const isSpinning = ref(true);
