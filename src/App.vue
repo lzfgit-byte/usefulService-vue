@@ -11,7 +11,11 @@
     import { getPostDataExt } from '@/utills/httpUtil';
     import imageApis from '@/const/global/image-apis';
     import { useStore } from 'vuex';
+    import { getCurrentInstance } from 'vue';
+    import { registerAppContext } from '@/components/globalCompoent/global-compoent-ts';
     const store = useStore();
+    const currentInstance = getCurrentInstance();
+    registerAppContext(currentInstance?.appContext);
     getPostDataExt(imageApis.listNetWOrkInfo, {}).then((res: ResultEntity) => {
         store.commit(
             'initLocalHosts',

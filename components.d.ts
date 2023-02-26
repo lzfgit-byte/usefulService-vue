@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     BookCatlog: typeof import('./src/components/reader/book-catlog.vue')['default']
     BookCover: typeof import('./src/components/reader/book-cover.vue')['default']
     CatlogCatlog: typeof import('./src/components/reader/catlog-catlog.vue')['default']
+    GlobalCompoentCom: typeof import('./src/components/globalCompoent/global-compoent-com.vue')['default']
     PdfReader: typeof import('./src/components/reader/pdf-reader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

@@ -16,3 +16,5 @@ export type ImageInfoEntity = {
     path?: string;
     base64Data?: string;
 };
+export type playVideoInType = { videoSrc: string; title: string };
+export type compoentFunc = { playVideo: (data: playVideoInType) => void };

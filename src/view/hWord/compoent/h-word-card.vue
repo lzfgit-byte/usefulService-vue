@@ -60,6 +60,7 @@
     import { getProxyImgUrl, getProxyVideoUrl } from '@/utills/KitUtil';
     import { getHtml } from '@/utills/NetUtils';
     import { getImgInfoOnly, getVideoInfo } from '@/view/hWord/const/h-word-func';
+    import { playVideo } from '@/components/globalCompoent/global-compoent-ts';
 
     const prop = defineProps({
         info: Object as PropType<mainHtml>,
@@ -89,8 +90,10 @@
     const getDetail = async (isFull = false) => {
         if (prop?.info?.type !== 'Video') {
             isSpinning.value = true;
-            const imgs = await getAllImg(isFull);
-            isSpinning.value = false;
+            const imgs: any = await getAllImg(isFull).catch((res) => {
+                isSpinning.value = false;
+            });
+
             allImgs = [];
             hasShowProgress.value = true;
             progressValue.value = 0;
@@ -116,7 +119,7 @@
             isSpinning.value = true;
             const html = await getHtml(prop?.info?.jumpUrl || '');
             const videoInfo: videoInfo = await getVideoInfo(html);
-            videoSet.playVideo(getProxyVideoUrl(videoInfo.videoSrc), videoInfo.tite);
+            playVideo({ videoSrc: getProxyVideoUrl(videoInfo.videoSrc), title: videoInfo.tite });
             isSpinning.value = false;
         }
     };
@@ -142,6 +145,7 @@
     };
     const getAllImg = async (isFull = false) => {
         const res = [];
+        debugger;
         const html = await getHtml((prop as any).info.jumpUrl);
         const imgInfo: imgInfo = await getHtml(html);
         res.push(imgInfo);
