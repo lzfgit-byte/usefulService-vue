@@ -7,6 +7,17 @@
 
 <script setup lang="ts">
     import MenuIns from '@/view/menu-ins.vue';
+    import { ImageInfoEntity, ResultEntity } from '@/const/type';
+    import { getPostDataExt } from '@/utills/httpUtil';
+    import imageApis from '@/const/global/image-apis';
+    import { useStore } from 'vuex';
+    const store = useStore();
+    getPostDataExt(imageApis.listNetWOrkInfo, {}).then((res: ResultEntity) => {
+        store.commit(
+            'initLocalHosts',
+            res?.data.map((item: ImageInfoEntity) => item.url)
+        );
+    });
 </script>
 <style lang="less">
     * {

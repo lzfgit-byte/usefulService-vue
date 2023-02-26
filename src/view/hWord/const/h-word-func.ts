@@ -1,0 +1,19 @@
+import { getPostDataExt } from '@/utills/httpUtil';
+import hWordApis from '@/view/hWord/const/h-word-apis';
+
+export default {};
+
+export const getVideoInfo = async (html: string): any => {
+    const res = await getPostDataExt(hWordApis.getVideoInfo, { html });
+    if (res?.code === 500) {
+        return Promise.reject();
+    }
+    return res?.data;
+};
+export const getImgInfoOnly = async (html: string): any => {
+    const res = await getPostDataExt(hWordApis.getImgInfoOnly, { html });
+    if (res?.code === 500) {
+        return Promise.reject();
+    }
+    return res?.data;
+};

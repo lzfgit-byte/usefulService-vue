@@ -20,7 +20,7 @@
                 <img
                     itemprop="thumbnail"
                     class="border"
-                    :src="imgBase64"
+                    :src="getProxyImgUrl(info?.coverUrl)"
                     :width="info.width"
                     :height="info.height"
                     :title="info.title"
@@ -57,16 +57,16 @@
     import 'viewerjs/dist/viewer.css';
     import { api as viewerApi } from 'v-viewer';
     import VideoHtml5 from '@/components/video-html5.vue';
+    import { getProxyImgUrl, getProxyVideoUrl } from '@/utills/KitUtil';
+    import { getHtml } from '@/utills/NetUtils';
+    import { getImgInfoOnly, getVideoInfo } from '@/view/hWord/const/h-word-func';
 
-    const { getImgBase64, getHtmlAxios, getImgInfo } = getHentaiWordFunc();
-    const { getImgInfoOnly, getVideoInfo, loadImgFile } = getHentaiWordFunc();
     const prop = defineProps({
         info: Object as PropType<mainHtml>,
     });
     const isSpinning = ref(true);
     const progressValue = ref(0);
     const hasShowProgress = ref(false);
-    const imgBase64 = ref('');
     const videoSet = reactive({
         visible: false,
         videoTitle: '',
@@ -84,14 +84,6 @@
     const mouseleave = () => {
         hasShow.value = false;
     };
-    getImgBase64(prop?.info?.coverUrl)
-        .then((res: string) => {
-            imgBase64.value = res;
-            isSpinning.value = false;
-        })
-        .catch((res: any) => {
-            console.log(prop?.info?.coverUrl);
-        });
     let allImgs: any[] = [];
     let viewerInstance: any = null;
     const getDetail = async (isFull = false) => {
@@ -105,14 +97,13 @@
             for (let i = 0; i < imgs.length; i++) {
                 if (isFull) {
                     allImgs.push({
-                        src: await getImgBase64(imgs[i].original),
+                        src: getProxyImgUrl(imgs[i].original),
                         'data-source': imgs[i].original,
                         alt: imgs[i].name,
                     });
                 } else {
-                    loadImgFile(imgs[i].zipUrl);
                     allImgs.push({
-                        src: await getImgBase64(imgs[i].zipUrl),
+                        src: await getProxyImgUrl(imgs[i].zipUrl),
                         'data-source': imgs[i].zipUrl,
                         alt: imgs[i].name,
                     });
@@ -123,9 +114,9 @@
             showImgs(allImgs);
         } else {
             isSpinning.value = true;
-            const html = await getHtmlAxios(prop?.info?.jumpUrl);
+            const html = await getHtml(prop?.info?.jumpUrl || '');
             const videoInfo: videoInfo = await getVideoInfo(html);
-            videoSet.playVideo(videoInfo.videoSrc, videoInfo.tite);
+            videoSet.playVideo(getProxyVideoUrl(videoInfo.videoSrc), videoInfo.tite);
             isSpinning.value = false;
         }
     };
@@ -145,25 +136,23 @@
         }
     };
     const getImgInfoByThumb = async (url: string) => {
-        const html = await getHtmlAxios(url);
+        const html = await getHtml(url);
         const imgInfo: imgInfo = await getImgInfoOnly(html);
         return imgInfo;
     };
     const getAllImg = async (isFull = false) => {
         const res = [];
-        const html = await getHtmlAxios((prop as any).info.jumpUrl);
-        const imgInfo: imgInfo = await getImgInfo(html);
-        isFull ? loadImgFile(imgInfo.original) : imgInfo;
+        const html = await getHtml((prop as any).info.jumpUrl);
+        const imgInfo: imgInfo = await getHtml(html);
         res.push(imgInfo);
         const allCount = imgInfo.others?.length || 0;
         for (let i = 0; i < allCount; i++) {
             if (imgInfo.others === undefined) {
                 continue;
             }
-            const imgOne = imgInfo?.others[i];
+            const imgOne: any = imgInfo?.others[i];
             if (imgOne.isCurrent) continue;
             const other = await getImgInfoByThumb(imgOne.jumpUrl);
-            isFull ? loadImgFile(imgInfo.original) : imgInfo;
             res.push(other);
         }
         return res;

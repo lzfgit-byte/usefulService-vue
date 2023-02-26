@@ -1,6 +1,9 @@
 import { fileInfoEntity } from '@/view/fileShare/const/file-share-type';
 import { SEPARATOR } from '@/const/const-data';
 import { Snackbar } from '@varlet/ui';
+import { useStore } from 'vuex';
+import proxyApis from '@/const/global/proxy-apis';
+const store = useStore();
 
 export const wrapperFileSize = (size: number) => {
     const sizeLevel = ['B', 'K', 'M', 'G'];
@@ -31,4 +34,5 @@ export const configStr2boolean = (str: string) => 'true' === str || '1' === str;
 
 export const Message = Snackbar;
 
-export const getProxyImgUrl = () => '';
+export const getProxyImgUrl = (url: string) => proxyApis.getImgByte + '?path=' + url;
+export const getProxyVideoUrl = (url: string) => proxyApis.getVideoByte + '?path=' + url;
