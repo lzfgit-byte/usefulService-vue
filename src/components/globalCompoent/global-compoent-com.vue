@@ -13,11 +13,10 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
     import VideoHtml5 from '@/components/video-html5.vue';
     import { reactive, ref } from '@vue/reactivity';
     import { nextTick } from 'vue';
-    // import { videoH5Expose } from '@/components/globalCompoent/global-compoent-ts';
 
     const videoRef = ref();
     const videoSet = reactive({

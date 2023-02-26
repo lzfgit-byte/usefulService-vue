@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <video
-            :id="elId"
+            ref="videoRef"
             class="video-js"
             controls
             preload="auto"
@@ -14,22 +14,31 @@
 </template>
 
 <script setup lang="ts">
-    import { ref } from 'vue';
+    import { ref, watch } from 'vue';
     import videojs, { VideoJsPlayerOptions } from 'video.js';
+    import { Message } from '@/utills/KitUtil';
     const src = ref();
-    const elId = ref('video-src');
     const videoType = ref('mp4');
+    const videoRef = ref();
     var options: VideoJsPlayerOptions = { html5: true, width: 300 };
     let player: videojs.Player;
-    setTimeout(() => {
-        player = videojs(elId.value, options, function onPlayerReady() {
-            videojs.log('Your player is ready!');
-            this.play();
-            this.on('ended', function () {
-                videojs.log('Awww...over so soon?!');
+    watch(videoRef, () => {
+        if (videoRef.value) {
+            player = videojs(videoRef.value, options, function onPlayerReady() {
+                videojs.log('Your player is ready!');
+                this.play();
+                this.on('ended', function () {
+                    videojs.log('Awww...over so soon?!');
+                });
+                this.on('error', function (data) {
+                    // Message.info('444');
+                    // const keys = Object.keys(data);
+                    // Message.info(keys.join(','));
+                });
             });
-        });
-    }, 1000);
+        }
+    });
+
     const playVideo = (videoSrc, title) => {
         src.value = videoSrc;
         const split = videoSrc?.split('.');
@@ -37,6 +46,7 @@
             videoType.value = split[split.length - 1];
         }
         player?.src({ src: videoSrc });
+        Message.info(document.getElementsByTagName('video').length.toString());
     };
 
     defineExpose({ playVideo: playVideo });
