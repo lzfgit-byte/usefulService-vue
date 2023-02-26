@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div ref="container" class="container">
         <video
             ref="videoRef"
             class="video-js"
@@ -20,10 +20,16 @@
 </template>
 
 <script setup lang="ts">
-    import { onMounted, ref } from 'vue';
+    import { onMounted, ref, watch } from 'vue';
     import videojs, { VideoJsPlayerOptions } from 'video.js';
     import { Message } from '@/utills/KitUtil';
     import { getPostDataExt } from '@/utills/httpUtil';
+    import { useIntersectionObserver } from '@vueuse/core';
+    const container = ref();
+    const targetIsVisible = ref();
+    const { stop } = useIntersectionObserver(container, ([{ isIntersecting }], observerElement) => {
+        targetIsVisible.value = isIntersecting;
+    });
     const src = ref();
     const videoType = ref('mp4');
     const videoRef = ref();
@@ -57,6 +63,12 @@
         player?.load();
         // Message.info(document.getElementsByTagName('video').length.toString());
     };
+    watch(targetIsVisible, () => {
+        if (!targetIsVisible.value) {
+            // player?.paused();
+            player?.pause();
+        }
+    });
 
     defineExpose({ playVideo: playVideo });
 </script>
