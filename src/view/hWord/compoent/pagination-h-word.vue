@@ -33,7 +33,7 @@
         float: right;
 
         .wp-paginate {
-            font-size: 18px;
+            font-size: 14px;
             border-radius: 0;
             padding: 0;
             margin: 0;
@@ -43,8 +43,8 @@
             background: #fff;
             color: #000;
             font-weight: 700;
-            border: 2px solid #000;
-            padding: 5px 10px;
+            border: 1px solid #000;
+            padding: 1px 6px;
             border-radius: 0;
         }
 
@@ -58,7 +58,7 @@
 
         span {
             background: #fff;
-            padding: 6px 12px;
+            padding: 1px 6px;
             border: 1px solid #ccc;
             color: #666;
             margin-right: 4px;

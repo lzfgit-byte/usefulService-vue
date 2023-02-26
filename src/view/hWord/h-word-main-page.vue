@@ -2,6 +2,12 @@
     <div class="container">
         <h-word-card v-for="item in infos" :key="item" :info="item"></h-word-card>
     </div>
+    <div class="pagination">
+        <pagination-h-word
+            :page-infos="pageInfos"
+            @change-page="handlerChangePage"
+        ></pagination-h-word>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -10,6 +16,8 @@
     import { getHtml } from '@/utills/NetUtils';
     import { getHtmlInfo } from '@/view/hWord/const/h-word-func';
     import HWordCard from '@/view/hWord/compoent/h-word-card.vue';
+    import PaginationHWord from '@/view/hWord/compoent/pagination-h-word.vue';
+    import { LoadingBar } from '@varlet/ui';
     const TEXT_URL = 'https://thehentaiworld.com/?new';
     let currentUrl = '';
     const infos = ref<[x: mainHtml]>();
@@ -21,6 +29,7 @@
 
     const isSpinning = ref(true);
     const loadPage = (url: string) => {
+        LoadingBar.start();
         isSpinning.value = true;
         currentUrl = url;
         getHtml(url)
@@ -32,6 +41,7 @@
                 pageInfos.value = res.pageInfo;
                 tags_.value = res.tags;
                 isSpinning.value = false;
+                LoadingBar.finish();
             });
     };
     loadPage(TEXT_URL);
