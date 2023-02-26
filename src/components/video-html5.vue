@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <video
-            id="my-player"
+            :id="elId"
             class="video-js"
             controls
             preload="auto"
@@ -14,21 +14,15 @@
 </template>
 
 <script setup lang="ts">
-    import { defineProps, ref } from 'vue';
+    import { ref } from 'vue';
     import videojs, { VideoJsPlayerOptions } from 'video.js';
-    const props = defineProps({
-        src: String,
-        title: String,
-    });
+    const src = ref();
+    const elId = ref('video-src');
     const videoType = ref('mp4');
-    const split = (props?.src as any)?.split('.');
-    if (split.length > 0) {
-        videoType.value = split[split.length - 1];
-    }
     var options: VideoJsPlayerOptions = { html5: true, width: 300 };
-
+    let player: videojs.Player;
     setTimeout(() => {
-        var player = videojs('#my-player', options, function onPlayerReady() {
+        player = videojs(elId.value, options, function onPlayerReady() {
             videojs.log('Your player is ready!');
             this.play();
             this.on('ended', function () {
@@ -36,6 +30,16 @@
             });
         });
     }, 1000);
+    const playVideo = (videoSrc, title) => {
+        src.value = videoSrc;
+        const split = videoSrc?.split('.');
+        if (split.length > 0) {
+            videoType.value = split[split.length - 1];
+        }
+        player?.src({ src: videoSrc });
+    };
+
+    defineExpose({ playVideo: playVideo });
 </script>
 
 <style scoped lang="less">

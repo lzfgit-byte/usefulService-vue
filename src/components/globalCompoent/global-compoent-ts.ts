@@ -25,6 +25,8 @@ const init = () => {
     document.body.appendChild(container);
 };
 let cb, ecb;
+
+export type videoH5Expose = { playVideo: (videoSrc: string, title: string) => void };
 export const playVideo = (data: playVideoInType, cb_ = null, ecb_ = null) => {
     cb = cb_;
     ecb = ecb_;
