@@ -3,6 +3,7 @@ import { SEPARATOR } from '@/const/const-data';
 import { Snackbar } from '@varlet/ui';
 import { useStore } from 'vuex';
 import proxyApis from '@/const/global/proxy-apis';
+import { getPostDataExt } from '@/utills/httpUtil';
 
 const store = useStore();
 
@@ -46,4 +47,8 @@ export const getFullUrlPath = (target: string, protocol) => {
         return protocol + ':' + target;
     }
     return protocol + target;
+};
+
+export const logToService = (data) => {
+    getPostDataExt('/api/log/log', { data });
 };

@@ -22,7 +22,7 @@
 <script setup lang="ts">
     import { onMounted, ref, watch } from 'vue';
     import videojs, { VideoJsPlayerOptions } from 'video.js';
-    import { Message } from '@/utills/KitUtil';
+    import { logToService, Message } from '@/utills/KitUtil';
     import { getPostDataExt } from '@/utills/httpUtil';
     import { useIntersectionObserver } from '@vueuse/core';
     import { useWindowSize } from '@vueuse/core';
@@ -50,15 +50,13 @@
         if (videoRef.value) {
             player = videojs(videoRef.value, options, function onPlayerReady() {
                 videojs.log('Your player is ready!');
-                this.play();
+                // this.play();
                 this.on('ended', function () {
                     videojs.log('Awww...over so soon?!');
                 });
                 this.on('error', function (data) {
-                    Message.info(data.msg);
-                    // const keys = Object.keys(data);
-                    // Message.info(keys.join(','));
-                    getPostDataExt('/api/log/log', data);
+                    Message.error('video 报错');
+                    logToService(data);
                 });
             });
         }
