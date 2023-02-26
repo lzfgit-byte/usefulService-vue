@@ -3,6 +3,7 @@ import { SEPARATOR } from '@/const/const-data';
 import { Snackbar } from '@varlet/ui';
 import { useStore } from 'vuex';
 import proxyApis from '@/const/global/proxy-apis';
+
 const store = useStore();
 
 export const wrapperFileSize = (size: number) => {
@@ -36,3 +37,13 @@ export const Message = Snackbar;
 
 export const getProxyImgUrl = (url: string) => proxyApis.getImgByte + '?path=' + url;
 export const getProxyVideoUrl = (url: string) => proxyApis.getVideoByte + '?path=' + url;
+
+export const getFullUrlPath = (target: string, protocol) => {
+    if (target.startsWith(protocol)) {
+        return target;
+    }
+    if (target.startsWith('//')) {
+        return protocol + ':' + target;
+    }
+    return protocol + target;
+};
