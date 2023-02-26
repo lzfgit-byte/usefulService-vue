@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <h-word-card v-for="item in infos" :key="item" :info="item"></h-word-card>
     </div>
 </template>
@@ -46,4 +46,11 @@
     });
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+    .container {
+        width: 100%;
+        text-align: center;
+        height: 86vh;
+        overflow-y: auto;
+    }
+</style>

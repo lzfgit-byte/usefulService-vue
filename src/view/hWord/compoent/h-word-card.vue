@@ -66,7 +66,6 @@
     const prop = defineProps({
         info: Object as PropType<mainHtml>,
     });
-    console.log('[info]', prop.info);
     const isSpinning = ref(false);
     const progressValue = ref(0);
     const hasShowProgress = ref(false);
