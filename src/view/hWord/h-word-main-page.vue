@@ -32,6 +32,12 @@
                                 </var-link>
                             </var-row>
                         </var-row>
+                        <var-row>
+                            <pagination-h-word
+                                :page-infos="pageInfos"
+                                @change-page="handlerChangePage"
+                            ></pagination-h-word>
+                        </var-row>
                     </div>
                 </var-collapse-item>
             </var-collapse>
@@ -39,12 +45,7 @@
 
         <h-word-card v-for="item in infos" :key="item" :info="item"></h-word-card>
     </div>
-    <div class="pagination">
-        <pagination-h-word
-            :page-infos="pageInfos"
-            @change-page="handlerChangePage"
-        ></pagination-h-word>
-    </div>
+    <div class="pagination"> </div>
 </template>
 
 <script setup lang="ts">
