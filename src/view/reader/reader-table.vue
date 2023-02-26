@@ -16,7 +16,7 @@
     import { getPostDataExt } from '@/utills/httpUtil';
     import { ref } from 'vue';
     import { BookInfo } from '@/view/reader/const/type';
-    import BookCover from '@/components/reader/book-cover.vue';
+    import BookCover from '@/view/reader/compoent/book-cover.vue';
     import { useRouter } from 'vue-router';
     import { message } from 'ant-design-vue';
     const router = useRouter();

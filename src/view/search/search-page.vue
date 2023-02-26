@@ -27,11 +27,11 @@
         value.value = searchInput.value.value;
         if (value.value === '180742') {
             const dynamicMenu = store.state.dynamicMenu;
-            if (!dynamicMenu.some((item: routerType) => item.path === '/hentaiWord')) {
+            if (!dynamicMenu.some((item: routerType) => item.path === '/hWord')) {
                 const route: any = {
-                    path: '/hentaiWord',
-                    name: 'hentaiWord',
-                    aliasZH: 'hentaiWord',
+                    path: '/hWord',
+                    name: 'hWord',
+                    aliasZH: 'hWord',
                     showInMenu: false,
                     icon: 'home',
                     component: () => import('@/view/setting/set-ting.vue'),

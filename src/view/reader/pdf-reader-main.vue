@@ -24,11 +24,11 @@
 
 <script setup lang="ts">
     import { useRoute, useRouter } from 'vue-router';
-    import PdfReader from '@/components/reader/pdf-reader.vue';
+    import PdfReader from '@/view/reader/compoent/pdf-reader.vue';
     import { reactive, ref } from 'vue';
     import { message } from 'ant-design-vue';
     import { LeftOutlined } from '@ant-design/icons-vue';
-    import BookCatlog from '@/components/reader/book-catlog.vue';
+    import BookCatlog from '@/view/reader/compoent/book-catlog.vue';
     const props = defineProps({ id: String });
     const route = useRoute();
     const router = useRouter();

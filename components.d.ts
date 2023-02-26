@@ -30,5 +30,6 @@ declare module '@vue/runtime-core' {
     VarSpace: typeof import('@varlet/ui')['_SpaceComponent']
     VarSwitch: typeof import('@varlet/ui')['_SwitchComponent']
     VarTable: typeof import('@varlet/ui')['_TableComponent']
+    VideoHtml5: typeof import('./src/components/video-html5.vue')['default']
   }
 }

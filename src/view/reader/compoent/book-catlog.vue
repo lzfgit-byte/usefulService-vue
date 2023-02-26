@@ -10,7 +10,7 @@
 <script setup lang="ts">
     //目录
     import { getPostDataExt } from '@/utills/httpUtil';
-    import CatlogCatlog from '@/components/reader/catlog-catlog.vue';
+    import CatlogCatlog from '@/view/reader/compoent/catlog-catlog.vue';
     import { ref } from 'vue';
     import { message } from 'ant-design-vue';
     import { ResultEntity } from '@/view/reader/const/type';
