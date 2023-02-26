@@ -25,3 +25,10 @@ export const getImgInfoOnly = async (html: string): any => {
     }
     return res?.data;
 };
+export const getImgInfo = async (html: string): any => {
+    const res = await getPostDataExt(hWordApis.getImgInfo, { html });
+    if (res?.code === 500) {
+        return Promise.reject();
+    }
+    return res?.data;
+};

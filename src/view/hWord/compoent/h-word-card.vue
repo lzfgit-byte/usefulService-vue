@@ -29,7 +29,7 @@
                 /><span
                     style="
                         position: absolute;
-                        bottom: -61px;
+                        bottom: 10px;
                         right: 5px;
                         background: #fff;
                         color: black;
@@ -60,12 +60,13 @@
     import VideoHtml5 from '@/components/video-html5.vue';
     import { getProxyImgUrl, getProxyVideoUrl } from '@/utills/KitUtil';
     import { getHtml } from '@/utills/NetUtils';
-    import { getImgInfoOnly, getVideoInfo } from '@/view/hWord/const/h-word-func';
+    import { getImgInfo, getImgInfoOnly, getVideoInfo } from '@/view/hWord/const/h-word-func';
     import { playVideo } from '@/components/globalCompoent/global-compoent-ts';
 
     const prop = defineProps({
         info: Object as PropType<mainHtml>,
     });
+    console.log('[info]', prop.info);
     const isSpinning = ref(false);
     const progressValue = ref(0);
     const hasShowProgress = ref(false);
@@ -94,7 +95,7 @@
             const imgs: any = await getAllImg(isFull).catch((res) => {
                 isSpinning.value = false;
             });
-
+            isSpinning.value = false;
             allImgs = [];
             hasShowProgress.value = true;
             progressValue.value = 0;
@@ -146,9 +147,8 @@
     };
     const getAllImg = async (isFull = false) => {
         const res = [];
-        debugger;
         const html = await getHtml((prop as any).info.jumpUrl);
-        const imgInfo: imgInfo = await getHtml(html);
+        const imgInfo: imgInfo = await getImgInfo(html);
         res.push(imgInfo);
         const allCount = imgInfo.others?.length || 0;
         for (let i = 0; i < allCount; i++) {
