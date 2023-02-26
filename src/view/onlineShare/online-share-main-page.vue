@@ -4,7 +4,8 @@
         <var-space :size="[10, 10]">
             <var-button type="primary" @click="handlerSave">保存</var-button>
         </var-space>
-        <Editor ref="editRef" v-model="content" :init="tiny.init" />
+        <!--        <Editor ref="editRef" v-model="content" :init="tiny.init" />-->
+        <var-input v-model="content" placeholder="请输入文本" textarea />
     </div>
 </template>
 
