@@ -7,14 +7,20 @@
             preload="auto"
             poster="https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/ironMan.jpg"
             data-setup="{}"
+            webkit-playsinline="true"
+            playsinline="true"
+            x-webkit-airplay="true"
+            x5-video-player-type="h5"
+            x5-video-player-fullscreen="true"
+            x5-video-ignore-metadata="true"
         >
-            <source :src="src" :type="`video/${videoType}`" />
         </video>
+        <div> </div>
     </div>
 </template>
 
 <script setup lang="ts">
-    import { ref, watch } from 'vue';
+    import { onMounted, ref } from 'vue';
     import videojs, { VideoJsPlayerOptions } from 'video.js';
     import { Message } from '@/utills/KitUtil';
     const src = ref();
@@ -22,7 +28,7 @@
     const videoRef = ref();
     var options: VideoJsPlayerOptions = { html5: true, width: 300 };
     let player: videojs.Player;
-    watch(videoRef, () => {
+    onMounted(() => {
         if (videoRef.value) {
             player = videojs(videoRef.value, options, function onPlayerReady() {
                 videojs.log('Your player is ready!');
@@ -31,7 +37,7 @@
                     videojs.log('Awww...over so soon?!');
                 });
                 this.on('error', function (data) {
-                    // Message.info('444');
+                    Message.info(data.msg);
                     // const keys = Object.keys(data);
                     // Message.info(keys.join(','));
                 });
@@ -46,7 +52,7 @@
             videoType.value = split[split.length - 1];
         }
         player?.src({ src: videoSrc });
-        Message.info(document.getElementsByTagName('video').length.toString());
+        // Message.info(document.getElementsByTagName('video').length.toString());
     };
 
     defineExpose({ playVideo: playVideo });

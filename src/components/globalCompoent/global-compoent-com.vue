@@ -26,9 +26,11 @@
         playVideo: (data) => {
             videoSet.videoSrc = data?.videoSrc;
             videoSet.videoTitle = data?.title;
-            videoRef.value.playVideo(videoSet.videoSrc, videoSet.videoTitle);
             nextTick(() => {
                 videoSet.visible = true;
+                nextTick(() => {
+                    videoRef.value.playVideo(videoSet.videoSrc, videoSet.videoTitle);
+                });
             });
         },
     });
