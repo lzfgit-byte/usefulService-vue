@@ -13,6 +13,9 @@
     import { useStore } from 'vuex';
     import { getCurrentInstance } from 'vue';
     import { registerAppContext } from '@/components/globalCompoent/global-compoent-ts';
+    import { dynaRoutes } from '@/view/search/const/search';
+    import { useRouter } from 'vue-router';
+    const router = useRouter();
     const store = useStore();
     const currentInstance = getCurrentInstance();
     registerAppContext(currentInstance?.appContext);
@@ -22,6 +25,7 @@
             res?.data.map((item: ImageInfoEntity) => item.url)
         );
     });
+    dynaRoutes.forEach((route) => router.addRoute(route));
 </script>
 <style lang="less">
     * {

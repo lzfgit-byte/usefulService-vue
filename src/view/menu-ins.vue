@@ -54,6 +54,7 @@
     import { getPostDataExt } from '@/utills/httpUtil';
     import imageApis from '@/const/global/image-apis';
     import { getCurrentRoutePath, Message } from '@/utills/KitUtil';
+    import { dynaRoutes } from '@/view/search/const/search';
     import { useStore } from 'vuex';
     import tempApis from '@/const/global/temp-apis';
     const store = useStore();
@@ -66,6 +67,14 @@
     const active = ref();
     if (currentAct.length > 0) {
         active.value = currentAct[0].name;
+    }
+    if (
+        getCurrentRoutePath() !== '/' &&
+        dynaRoutes.some((item) => item.path === getCurrentRoutePath())
+    ) {
+        setTimeout(() => {
+            router.push({ path: getCurrentRoutePath() });
+        });
     }
     const QRCodeInfo = ref<ImageInfoEntity[]>();
     const QRModal = reactive({

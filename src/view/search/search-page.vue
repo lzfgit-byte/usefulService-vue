@@ -16,28 +16,19 @@
 
 <script setup lang="ts">
     import { ref } from 'vue';
-    import { useRouter } from 'vue-router';
     import { useStore } from 'vuex';
     import { routerType } from '@/router';
-    const router = useRouter();
+    import { dynaRoutes } from '@/view/search/const/search';
+
     const store = useStore();
     const value = ref();
     const searchInput = ref<any>();
-    const route: any = {
-        path: '/hWord',
-        name: 'hWord',
-        aliasZH: 'hWord',
-        showInMenu: false,
-        icon: 'home',
-        component: () => import('@/view/hWord/h-word-main-page.vue'),
-    };
-    router.addRoute(route);
     const handleBlur = () => {
         value.value = searchInput.value.value;
         if (value.value === '180742') {
             const dynamicMenu = store.state.dynamicMenu;
             if (!dynamicMenu.some((item: routerType) => item.path === '/hWord')) {
-                store.commit('addNew', route);
+                dynaRoutes.forEach((route) => store.commit('addNew', route));
             }
         }
     };

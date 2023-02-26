@@ -1,5 +1,6 @@
 <template>
-    <div class="thumb" @mouseenter="mouseenter" @mouseleave="mouseleave">
+    <!--    @mouseenter="mouseenter" @mouseleave="mouseleave"-->
+    <div class="thumb">
         <div
             v-if="info.type !== 'Video'"
             :class="{ shadow: true, hideShadow: !hasShow, showShadow: hasShow }"

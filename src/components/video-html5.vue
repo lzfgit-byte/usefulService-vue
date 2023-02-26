@@ -8,7 +8,7 @@
             poster="https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/ironMan.jpg"
             data-setup="{}"
         >
-            <source :src="src" />
+            <source :src="src" :type="`video/${videoType}`" />
         </video>
     </div>
 </template>
@@ -16,11 +16,15 @@
 <script setup lang="ts">
     import { defineProps, ref } from 'vue';
     import videojs, { VideoJsPlayerOptions } from 'video.js';
-    const visible = ref(false);
     const props = defineProps({
         src: String,
         title: String,
     });
+    const videoType = ref('mp4');
+    const split = (props?.src as any)?.split('.');
+    if (split.length > 0) {
+        videoType.value = split[split.length - 1];
+    }
     var options: VideoJsPlayerOptions = { html5: true, width: 300 };
 
     setTimeout(() => {
