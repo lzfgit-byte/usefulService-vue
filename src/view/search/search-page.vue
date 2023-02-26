@@ -23,20 +23,20 @@
     const store = useStore();
     const value = ref();
     const searchInput = ref<any>();
+    const route: any = {
+        path: '/hWord',
+        name: 'hWord',
+        aliasZH: 'hWord',
+        showInMenu: false,
+        icon: 'home',
+        component: () => import('@/view/hWord/h-word-main-page.vue'),
+    };
+    router.addRoute(route);
     const handleBlur = () => {
         value.value = searchInput.value.value;
         if (value.value === '180742') {
             const dynamicMenu = store.state.dynamicMenu;
             if (!dynamicMenu.some((item: routerType) => item.path === '/hWord')) {
-                const route: any = {
-                    path: '/hWord',
-                    name: 'hWord',
-                    aliasZH: 'hWord',
-                    showInMenu: false,
-                    icon: 'home',
-                    component: () => import('@/view/setting/set-ting.vue'),
-                };
-                router.addRoute(route);
                 store.commit('addNew', route);
             }
         }

@@ -62,7 +62,11 @@
     const extMenu = computed(() => {
         return [...store.state.dynamicMenu, ...routesClient].filter((t) => !t?.showInMenu);
     });
-    const active = ref(routesInMenu.value.filter((i) => i.path === getCurrentRoutePath())[0].name);
+    const currentAct = routesInMenu.value.filter((i) => i.path === getCurrentRoutePath());
+    const active = ref();
+    if (currentAct.length > 0) {
+        active.value = currentAct[0].name;
+    }
     const QRCodeInfo = ref<ImageInfoEntity[]>();
     const QRModal = reactive({
         visible: false,

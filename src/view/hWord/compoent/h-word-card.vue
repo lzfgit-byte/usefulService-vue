@@ -64,7 +64,7 @@
     const prop = defineProps({
         info: Object as PropType<mainHtml>,
     });
-    const isSpinning = ref(true);
+    const isSpinning = ref(false);
     const progressValue = ref(0);
     const hasShowProgress = ref(false);
     const videoSet = reactive({
