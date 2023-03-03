@@ -16,9 +16,9 @@
     import { reactive, ref } from '@vue/reactivity';
     import { watch } from 'vue';
     import settingApis from '@/view/setting/const/setting-apis';
-    import { getPostDataExt } from '@/utills/httpUtil';
+    import { getPostDataExt } from '@/utils/httpUtil';
     import { ResultEntity } from '@/const/type';
-    import { configStr2boolean } from '@/utills/KitUtil';
+    import { configStr2boolean } from '@/utils/KitUtil';
     import { settings } from '@/view/setting/const/setting-types';
 
     const disabled = ref(false);

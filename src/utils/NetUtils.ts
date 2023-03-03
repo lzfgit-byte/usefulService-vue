@@ -1,7 +1,7 @@
-import { getPostDataExt } from '@/utills/httpUtil';
+import { getPostDataExt } from '@/utils/httpUtil';
 import proxyApis from '@/const/global/proxy-apis';
 import { ResultEntity } from '@/const/type';
-import { IMessage, notBlankOrEmpty } from '@/utills/KitUtil';
+import { IMessage, notBlankOrEmpty } from '@/utils/KitUtil';
 import { LoadingBar } from '@varlet/ui';
 
 export default {};

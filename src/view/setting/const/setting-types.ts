@@ -1,7 +1,7 @@
-import { getPostDataExt } from '@/utills/httpUtil';
+import { getPostDataExt } from '@/utils/httpUtil';
 import settingApis from '@/view/setting/const/setting-apis';
 import { ResultEntity } from '@/const/type';
-import { configStr2boolean } from '@/utills/KitUtil';
+import { configStr2boolean } from '@/utils/KitUtil';
 
 export type settings = { isShowHidden?: boolean };
 

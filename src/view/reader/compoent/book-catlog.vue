@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
     //目录
-    import { getPostDataExt } from '@/utills/httpUtil';
+    import { getPostDataExt } from '@/utils/httpUtil';
     import CatlogCatlog from '@/view/reader/compoent/catlog-catlog.vue';
     import { ref } from 'vue';
     import { message } from 'ant-design-vue';

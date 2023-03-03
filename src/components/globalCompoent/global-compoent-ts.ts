@@ -1,7 +1,7 @@
 import { compoentFunc, playVideoInType } from '@/const/type';
 import { h, ref, render, VNode } from 'vue';
 import GlobalCompoentCom from '@/components/globalCompoent/global-compoent-com.vue';
-import { IMessage } from '@/utills/KitUtil';
+import { IMessage } from '@/utils/KitUtil';
 const currentRecord = ref();
 const appContext = ref();
 let currentInstance: compoentFunc;

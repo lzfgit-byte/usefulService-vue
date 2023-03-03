@@ -22,6 +22,7 @@
                         >
                         <var-cell @click="handlerFabClick({ key: 'showIpQR' })">二维码</var-cell>
                         <var-cell @click="handlerFabClick({ key: 'clearTemp' })">清除缓存</var-cell>
+                        <var-cell @click="handlerFabClick({ key: 'refreshTemp' })">刷新</var-cell>
                     </template>
                 </var-menu>
             </template>
@@ -51,9 +52,9 @@
     import { computed, reactive, ref } from 'vue';
     import { routerType, routes as routesClient } from '@/router';
     import { ImageInfoEntity, ResultEntity } from '@/const/type';
-    import { getPostDataExt } from '@/utills/httpUtil';
+    import { getPostDataExt } from '@/utils/httpUtil';
     import imageApis from '@/const/global/image-apis';
-    import { getCurrentRoutePath, IMessage } from '@/utills/KitUtil';
+    import { getCurrentRoutePath, IMessage } from '@/utils/KitUtil';
     import { dynaRoutes } from '@/view/search/const/search';
     import { useStore } from 'vuex';
     import tempApis from '@/const/global/temp-apis';
@@ -96,6 +97,14 @@
                 })
                 .catch(() => {
                     IMessage.error('清除失败');
+                });
+        } else if (key === 'refreshTemp') {
+            getPostDataExt(tempApis.clearTemp, { type: 'html' })
+                .then(() => {
+                    IMessage.success('刷新成功');
+                })
+                .catch(() => {
+                    IMessage.error('刷新失败');
                 });
         } else {
             const item: routerType = route;

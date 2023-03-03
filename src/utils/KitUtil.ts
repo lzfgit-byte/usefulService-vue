@@ -3,7 +3,7 @@ import { SEPARATOR } from '@/const/const-data';
 import { Snackbar } from '@varlet/ui';
 import { useStore } from 'vuex';
 import proxyApis from '@/const/global/proxy-apis';
-import { getPostDataExt } from '@/utills/httpUtil';
+import { getPostDataExt } from '@/utils/httpUtil';
 
 const store = useStore();
 

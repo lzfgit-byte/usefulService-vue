@@ -8,7 +8,7 @@
 <script setup lang="ts">
     import MenuIns from '@/view/menu-ins.vue';
     import { ImageInfoEntity, ResultEntity } from '@/const/type';
-    import { getPostDataExt } from '@/utills/httpUtil';
+    import { getPostDataExt } from '@/utils/httpUtil';
     import imageApis from '@/const/global/image-apis';
     import { useStore } from 'vuex';
     import { getCurrentInstance } from 'vue';

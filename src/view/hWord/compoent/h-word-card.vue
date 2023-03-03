@@ -58,8 +58,8 @@
     import 'viewerjs/dist/viewer.css';
     import { api as viewerApi } from 'v-viewer';
     import VideoHtml5 from '@/components/video-html5.vue';
-    import { getProxyImgUrl, getProxyVideoUrl } from '@/utills/KitUtil';
-    import { getHtml } from '@/utills/NetUtils';
+    import { getProxyImgUrl, getProxyVideoUrl } from '@/utils/KitUtil';
+    import { getHtml } from '@/utils/NetUtils';
     import { getImgInfo, getImgInfoOnly, getVideoInfo } from '@/view/hWord/const/h-word-func';
     import { playVideo } from '@/components/globalCompoent/global-compoent-ts';
     import { LoadingBar } from '@varlet/ui';

@@ -1,6 +1,6 @@
-import { getPostDataExt } from '@/utills/httpUtil';
+import { getPostDataExt } from '@/utils/httpUtil';
 import hWordApis from '@/view/hWord/const/h-word-apis';
-import { IMessage } from '@/utills/KitUtil';
+import { IMessage } from '@/utils/KitUtil';
 import { LoadingBar } from '@varlet/ui';
 
 export default {};

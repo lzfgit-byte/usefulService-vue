@@ -51,12 +51,12 @@
 <script setup lang="ts">
     import { reactive, ref } from 'vue';
     import { htmlInfo, mainHtml, tags } from '@/view/hWord/const/h-word-type';
-    import { getHtml } from '@/utills/NetUtils';
+    import { getHtml } from '@/utils/NetUtils';
     import { getHtmlInfo } from '@/view/hWord/const/h-word-func';
     import HWordCard from '@/view/hWord/compoent/h-word-card.vue';
     import PaginationHWord from '@/view/hWord/compoent/pagination-h-word.vue';
     import { LoadingBar } from '@varlet/ui';
-    import { getFullUrlPath } from '@/utills/KitUtil';
+    import { getFullUrlPath } from '@/utils/KitUtil';
 
     const TEXT_URL = 'https://thehentaiworld.com/?new';
     let currentUrl = '';

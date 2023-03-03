@@ -39,10 +39,10 @@
     import fileShareApis from '@/view/fileShare/const/file-share-apis';
 
     import { ref } from 'vue';
-    import { getPostDataExt } from '@/utills/httpUtil';
+    import { getPostDataExt } from '@/utils/httpUtil';
     import { fileInfoEntity } from '@/view/fileShare/const/file-share-type';
     import { ResultEntity } from '@/const/type';
-    import { isDir, notBlankOrEmpty, wrapperFileSize } from '@/utills/KitUtil';
+    import { isDir, notBlankOrEmpty, wrapperFileSize } from '@/utils/KitUtil';
     import { SEPARATOR } from '@/const/const-data';
 
     const fileInfoDataArr = ref<fileInfoEntity[]>([]);

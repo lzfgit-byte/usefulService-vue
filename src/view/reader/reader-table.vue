@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-    import { getPostDataExt } from '@/utills/httpUtil';
+    import { getPostDataExt } from '@/utils/httpUtil';
     import { ref } from 'vue';
     import { BookInfo } from '@/view/reader/const/type';
     import BookCover from '@/view/reader/compoent/book-cover.vue';

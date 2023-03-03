@@ -12,7 +12,7 @@
 <script setup>
     import Editor from '@tinymce/tinymce-vue';
     import { reactive, ref } from '@vue/reactivity';
-    import { getPostDataExt } from '@/utills/httpUtil';
+    import { getPostDataExt } from '@/utils/httpUtil';
     import { Snackbar } from '@varlet/ui';
     import onlineShareApis from '@/view/onlineShare/const/onlineShareApis';
     const editRef = ref();

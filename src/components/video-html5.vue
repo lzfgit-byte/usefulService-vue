@@ -22,7 +22,7 @@
 <script setup lang="ts">
     import { onMounted, ref, watch } from 'vue';
     import videojs, { VideoJsPlayerOptions } from 'video.js';
-    import { logToService, IMessage } from '@/utills/KitUtil';
+    import { logToService, IMessage } from '@/utils/KitUtil';
     import { useIntersectionObserver } from '@vueuse/core';
     import { useWindowSize } from '@vueuse/core';
 
