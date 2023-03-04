@@ -3,6 +3,7 @@ import proxyApis from '@/const/global/proxy-apis';
 import { ResultEntity } from '@/const/type';
 import { IMessage, notBlankOrEmpty } from '@/utils/KitUtil';
 import { LoadingBar } from '@varlet/ui';
+import tempApis from '@/const/global/temp-apis';
 
 export default {};
 export const getHtml = async (url: string) => {
@@ -17,5 +18,24 @@ export const getHtml = async (url: string) => {
             return Promise.reject();
         }
     );
+    return res?.data;
+};
+export const getSetting = async (key: string) => {
+    const res: ResultEntity = await getPostDataExt(tempApis.getSaveData, { key: key }).catch(
+        (res) => {
+            IMessage.error(res?.msg || '错误');
+            return Promise.reject();
+        }
+    );
+    return res?.data;
+};
+export const setSetting = async (key: string, setting: string) => {
+    const res: ResultEntity = await getPostDataExt(tempApis.doSaveData, {
+        key: key,
+        setting: setting,
+    }).catch((res) => {
+        IMessage.error(res?.msg || '错误');
+        return Promise.reject();
+    });
     return res?.data;
 };

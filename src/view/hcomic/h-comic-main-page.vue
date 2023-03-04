@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
     import { nextTick, ref } from 'vue';
-    import { content, detail } from '@/view/hcomic/const/18comicType';
+    import { content, detail } from '@/view/hcomic/const/18-comic-type';
     import ComicMain from '@/view/hcomic/components/comic-main.vue';
     import ComicReader from '@/view/hcomic/components/comic-reader.vue';
     import ComicSearch from '@/view/hcomic/components/comic-search.vue';
