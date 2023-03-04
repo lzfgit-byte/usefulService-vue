@@ -20,3 +20,9 @@ export const getReaderInfos = async (html: string) => {
     });
     return res?.data;
 };
+export const getSearchInfo = async (html: string) => {
+    const res = await getPostDataExt(hComicApis.getSearchInfo, { html }).catch(() => {
+        return Promise.reject();
+    });
+    return res?.data;
+};
