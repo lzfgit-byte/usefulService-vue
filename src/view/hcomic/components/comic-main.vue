@@ -113,7 +113,7 @@
 </template>
 
 <script setup lang="ts">
-    import { inject, ref, toRaw } from 'vue';
+    import { ref, toRaw } from 'vue';
     import ComicCover from '@/view/hcomic/components/comic-cover.vue';
     import { homeInfo, HOME_URL, setWrapper } from '@/view/hcomic/const/18-comic-type';
     import { setting, content } from '@/view/hcomic/const/18-comic-type';
@@ -162,7 +162,7 @@
         emits('searchComic', searchUrl);
     };
     const storeVisable = ref(false);
-    const history = ref<setting[]>();
+    const history = ref<setting[]>([]);
     const showStore = async () => {
         storeVisable.value = true;
         const set = await getSetting(COMIC_HISTORY_KEY);
