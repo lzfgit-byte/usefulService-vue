@@ -4,7 +4,7 @@
             <span v-for="item in coverInfo?.type" :key="item">{{ item.title }}</span>
         </div>
         <div class="imgContainer" @click="handlerImgClick">
-            <img width="213" :src="getProxyImgUrl(coverInfo?.coverUrl)" />
+            <img width="100" :src="getProxyImgUrl(coverInfo?.coverUrl)" />
         </div>
         <div class="heart">{{ coverInfo?.heart }}</div>
         <div class="title">{{ coverInfo?.title }}</div>
@@ -56,7 +56,7 @@
     .container {
         display: inline-block;
         position: relative;
-        width: 213px;
+        width: 100px;
         height: auto;
         margin: 10px;
         .imgContainer {
@@ -82,8 +82,8 @@
         }
         .heart {
             position: absolute;
-            left: 5px;
-            top: 249px;
+            left: 4px;
+            top: 107px;
             border: none;
             color: #fff;
             padding: 1px 3px 0;
@@ -95,7 +95,7 @@
         }
         .title {
             display: block;
-            width: 213px;
+            width: 100px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -122,9 +122,12 @@
             overflow-x: scroll;
             .wrapper {
                 width: 1000px;
+                display: flex;
             }
             .tag {
                 background-color: #666;
+                width: 60px;
+                overflow: hidden;
                 color: #fff;
                 padding: 0 5px;
                 border-radius: 2rem;
@@ -133,7 +136,7 @@
                 cursor: pointer;
                 text-overflow: clip;
                 margin-top: 5px;
-                overflow-x: scroll;
+                overflow-x: hidden;
             }
             &::-webkit-scrollbar {
                 width: 5px;

@@ -13,46 +13,54 @@
                 <var-button type="primary" @click="byTagsVisable = true">分类查询</var-button>
             </var-space>
         </div>
-        <var-card :title="'连载更新'">
-            <div class="coverContainer">
-                <comic-cover
-                    v-for="item in serialLatest"
-                    :key="item"
-                    :cover-info="item"
-                    @to-content="handlerContent"
-                ></comic-cover>
-            </div>
+
+        <var-card :title="'最新韩漫'">
+            <template #extra>
+                <div class="coverContainer">
+                    <comic-cover
+                        :cover-info="serialLatest[0]"
+                        @to-content="handlerContent"
+                    ></comic-cover>
+                    <!--            <comic-cover-->
+                    <!--                v-for="item in serialLatest"-->
+                    <!--                :key="item"-->
+                    <!--                :cover-info="item"-->
+                    <!--                @to-content="handlerContent"-->
+                    <!--            ></comic-cover>-->
+                </div>
+            </template>
         </var-card>
-        <card :title="'最新韩漫'">
-            <div class="coverContainer">
-                <comic-cover
-                    v-for="item in latestKoreanComic"
-                    :key="item"
-                    :cover-info="item"
-                    @to-content="handlerContent"
-                ></comic-cover>
-            </div>
-        </card>
-        <card :title="'推荐'">
-            <div class="coverContainer">
-                <comic-cover
-                    v-for="item in recommend"
-                    :key="item"
-                    :cover-info="item"
-                    @to-content="handlerContent"
-                ></comic-cover>
-            </div>
-        </card>
-        <card :title="'最新本子'">
-            <div class="coverContainer">
-                <comic-cover
-                    v-for="item in latest"
-                    :key="item"
-                    :cover-info="item"
-                    @to-content="handlerContent"
-                ></comic-cover>
-            </div>
-        </card>
+
+        <!--        <var-card :title="'最新韩漫'">-->
+        <!--            <div class="coverContainer">-->
+        <!--                <comic-cover-->
+        <!--                    v-for="item in latestKoreanComic"-->
+        <!--                    :key="item"-->
+        <!--                    :cover-info="item"-->
+        <!--                    @to-content="handlerContent"-->
+        <!--                ></comic-cover>-->
+        <!--            </div>-->
+        <!--        </var-card>-->
+        <!--        <var-card :title="'推荐'">-->
+        <!--            <div class="coverContainer">-->
+        <!--                <comic-cover-->
+        <!--                    v-for="item in recommend"-->
+        <!--                    :key="item"-->
+        <!--                    :cover-info="item"-->
+        <!--                    @to-content="handlerContent"-->
+        <!--                ></comic-cover>-->
+        <!--            </div>-->
+        <!--        </var-card>-->
+        <!--        <var-card :title="'最新本子'">-->
+        <!--            <div class="coverContainer">-->
+        <!--                <comic-cover-->
+        <!--                    v-for="item in latest"-->
+        <!--                    :key="item"-->
+        <!--                    :cover-info="item"-->
+        <!--                    @to-content="handlerContent"-->
+        <!--                ></comic-cover>-->
+        <!--            </div>-->
+        <!--        </var-card>-->
     </var-loading>
 
     <var-popup
