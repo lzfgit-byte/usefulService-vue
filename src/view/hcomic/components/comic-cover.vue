@@ -8,21 +8,21 @@
         </div>
         <div class="heart">{{ coverInfo?.heart }}</div>
         <div class="title">{{ coverInfo?.title }}</div>
-        <div class="author"
-            ><span>{{ coverInfo?.author }}</span>
-        </div>
-        <div class="tagsContain">
-            <div class="wrapper" align="left">
-                <span
-                    v-for="item in coverInfo?.tags"
-                    :key="item"
-                    class="tag"
-                    @click="handlerTagClick(item?.jumpUrl)"
-                >
-                    {{ item?.title }}
-                </span>
-            </div>
-        </div>
+        <!--        <div class="author"-->
+        <!--            ><span>{{ coverInfo?.author }}</span>-->
+        <!--        </div>-->
+        <!--        <div class="tagsContain">-->
+        <!--            <div class="wrapper" align="left">-->
+        <!--                <span-->
+        <!--                    v-for="item in coverInfo?.tags"-->
+        <!--                    :key="item"-->
+        <!--                    class="tag"-->
+        <!--                    @click="handlerTagClick(item?.jumpUrl)"-->
+        <!--                >-->
+        <!--                    {{ item?.title }}-->
+        <!--                </span>-->
+        <!--            </div>-->
+        <!--        </div>-->
     </div>
 </template>
 

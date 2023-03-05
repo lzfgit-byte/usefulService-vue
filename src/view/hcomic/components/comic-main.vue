@@ -17,16 +17,16 @@
         <var-card :title="'最新韩漫'">
             <template #extra>
                 <div class="coverContainer">
+                    <!--                    <comic-cover-->
+                    <!--                        :cover-info="serialLatest[0]"-->
+                    <!--                        @to-content="handlerContent"-->
+                    <!--                    ></comic-cover>-->
                     <comic-cover
-                        :cover-info="serialLatest[0]"
+                        v-for="item in serialLatest"
+                        :key="item"
+                        :cover-info="item"
                         @to-content="handlerContent"
                     ></comic-cover>
-                    <!--            <comic-cover-->
-                    <!--                v-for="item in serialLatest"-->
-                    <!--                :key="item"-->
-                    <!--                :cover-info="item"-->
-                    <!--                @to-content="handlerContent"-->
-                    <!--            ></comic-cover>-->
                 </div>
             </template>
         </var-card>
