@@ -2,15 +2,13 @@
     <var-loading :loading="spinning">
         <div class="btnContainer">
             <var-space>
-                <input-search
+                <var-input
                     v-model:value="searchValue"
                     placeholder="搜索"
                     style="width: 250px"
                     enter-button
                     @search="handlerSarch"
                 />
-                <var-button @click="reset">刷新</var-button>
-                <var-button type="primary" @click="removeCacheAll_">清除缓存</var-button>
                 <var-button type="primary" @click="showStore">阅读记录</var-button>
                 <var-button type="primary" @click="byTagsVisable = true">分类查询</var-button>
             </var-space>

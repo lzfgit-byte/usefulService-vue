@@ -4,7 +4,7 @@
             <span v-for="item in coverInfo?.type" :key="item">{{ item.title }}</span>
         </div>
         <div class="imgContainer" @click="handlerImgClick">
-            <img width="213" :src="coverInfo?.coverUrl" />
+            <img width="213" :src="getProxyImgUrl(coverInfo?.coverUrl)" />
         </div>
         <div class="heart">{{ coverInfo?.heart }}</div>
         <div class="title">{{ coverInfo?.title }}</div>
@@ -32,6 +32,7 @@
     import bus from '@/utils/bus';
     import { getHtml } from '@/utils/NetUtils';
     import { getComicDetailInfo } from '@/view/hcomic/const/18-comic-func';
+    import { getProxyImgUrl } from '@/utils/KitUtil';
     const props = defineProps({
         coverInfo: Object as PropType<comicCover>,
     });
